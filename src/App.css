@@ -1,42 +1,128 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&family=Titillium+Web&display=swap');
+
+
+:root {
+  
+  --primary: #26434f;
+  --primaryLight: #376071;
+  --primaryDark: #15262d;
+  --secondary: #59a25c;
+  --secondaryLight: #6fca3a;
+  --primary-gradient:  linear-gradient(to right, var(--primary), var(--primaryLight));
+  --secondary-gradient:  linear-gradient(to right, var(--secondary), var(--secondaryLight));
+  --primary-gradient-Alpha50: linear-gradient(to right, #26434f50 , #37607150);
+
+  background: var(--primary-gradient-Alpha50);
+} 
+.main {
+  margin-top: 6rem;
+  padding-top: 1rem;
+  width: 100vw;
+}
+
+.main_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 0.5rem;  
+  width: 100%;
+  background: var(--primary-gradient)
+  
+}
+.main_header_container {
+ height: 100%;
+ margin: 0 1rem;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: space-between; 
+}
+.main_header div {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+.main_header h1 {
+  color: white;
+ margin: 0;
+ margin-left: 1rem;
+ padding: 0;
+ font-size: 2rem;
+ font-family: 'Titillium Web', sans-serif;
+}
+.header-logo {
+  height: 3.8rem;
+  width: 3.8rem;
+}
+
+/* books inline container */
+.books_inlineContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  background: var(--primary-gradient-Alpha50);
+
+}
+
+
+/* BOOK CARD */
+
+.bookCard {
+  display: flex;
+  flex-direction: column;
+  width: 12rem;
+  height: 18rem;
+  align-items: center;
+  margin: 0 0.25rem;
+  background-color: bisque;
+
+  text-align: left;
+
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* box-shadow:  0 8px 6px -6px black; */
+}
+
+.bookCard img {
+  height: 5rem;
+  width: 5rem;
+
+}
+.bookCard_body h2 {
+  font-size: 1rem;
+}
+.bookCard_body h4 {
+  font-size: 0.6rem;
+}
+
+.bookCard_description {
+  display: none;
+  height: 5rem;
+  overflow: scroll;
+}
+
+/* SEARCH BAR */
+.SearchBar_container {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  height: 1.5rem;
+  background: var(--primary-gradient);
+}
+
+.SearchBar_container p {
+  width: 10%;
+  height: 1.2rem;
   text-align: center;
+  color: #15262d;
+  background: var(--secondary-gradient);
+  font-size: small;
+  border-radius: 0rem 0.3rem 0.3rem 0rem;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.SearchBar_container input {
+  width: 60%;
+  border: 1px solid var(--secondary);
+  border-radius: 0.3rem 0rem 0rem 0.3rem;
+  font-size: smaller;
 }
