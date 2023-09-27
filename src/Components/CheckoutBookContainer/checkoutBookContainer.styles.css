@@ -1,0 +1,23 @@
+.CheckoutBookContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 160px;
+    width: 90vw;
+    margin: 1rem;
+    color: black;
+    background-color: white;
+    border-radius: 1rem;
+    overflow: scroll;
+}
+
+.CheckoutBookContainer img {
+    margin-left: 1rem;
+    height: 120px;
+    width: 100px;
+}
+
+.bookCard_body {
+    text-align: left;
+}

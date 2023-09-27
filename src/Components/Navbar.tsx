@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useState } from 'react';
-import img_1 from '../Images/525-5253539_3d-number-1-png.png';
 import logo_star_transparent from '../Assets/Images/Logo/logo-star-transparent.png'
 import SearchBar from './searchBar/SearchBar';
 

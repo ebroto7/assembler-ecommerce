@@ -13,11 +13,15 @@
   --primary-gradient-Alpha50: linear-gradient(to right, #26434f50 , #37607150);
 
   background: var(--primary-gradient-Alpha50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } 
 .main {
   margin-top: 6rem;
   padding-top: 1rem;
   width: 100vw;
+
 }
 
 .main_header {
@@ -199,4 +203,17 @@
   border: 1px solid var(--secondary);
   border-radius: 0.3rem 0rem 0rem 0.3rem;
   font-size: smaller;
+}
+
+
+.cartPage_Header {
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: var(--primary-gradient);
+  height: 20vh;
+}
+
+.cartPage_bookContainer {
+  height: 60vh;
+  overflow-y: scroll;
 }
