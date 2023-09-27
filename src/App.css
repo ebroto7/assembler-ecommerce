@@ -55,13 +55,42 @@
   width: 3.8rem;
 }
 
+/* landigPage */
+
+.landigPage_container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--primary-gradient);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.landigPage_container img {
+  display: flex;
+  align-items: center;
+}
+
+.landigPage_container  h1 {
+  color: white;
+  text-align: center;
+}
+
+.landigPage_container img {
+  width: 60%;
+}
+
+.landigPage_container button {
+  margin: 8px;
+}
+
 /* books inline container */
 .books_inlineContainer {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   background: var(--primary-gradient-Alpha50);
-
+  padding: 0.5rem;
+ 
 }
 
 
@@ -73,14 +102,14 @@
   width: 12rem;
   height: 18rem;
   align-items: center;
-  margin: 0 0.25rem;
+  margin: 0 0.5rem;
   background-color: bisque;
 
   text-align: left;
 
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  /* box-shadow:  0 8px 6px -6px black; */
+  box-shadow:  0 0 10px 0px black;
 }
 
 .bookCard img {
@@ -95,11 +124,56 @@
   font-size: 0.6rem;
 }
 
-.bookCard_description {
-  display: none;
-  height: 5rem;
-  overflow: scroll;
+.bookCard_cart_container {
+  display: flex;
+  flex-direction: column;
 }
+.bookCard_cart_container p {
+  margin: 0px 12px;
+  text-align: left;
+  font-size: 8px;
+}
+
+
+.bookCard_cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  margin: 4px 8px;
+}
+.bookCard_cart div {
+  display: flex;
+  flex-direction: row;
+  height: 32px;
+  background: var(--secondary);
+  border-radius: 8px;
+
+}
+.bookCard_cart_quantity {
+  width: 32px;
+  margin: 0;
+  text-align: center;
+  line-height: 32px;
+}
+.bookCard_cart button {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border: 2px solid var(--secondaryLight);
+}
+
+.bookCard_cart_buyBtn {
+  margin-left: 8px;
+  
+}
+
+.errorMessage {
+  color: red;
+}
+
+
 
 /* SEARCH BAR */
 .SearchBar_container {

@@ -9,11 +9,11 @@ type Props = {
 
 const BookInlineContainer:FC<Props> = ({title, bookList} ) => {
   return (
-    <section className='best_sellers_section'>
+    <section className='best_sellers_section' >
         <h3>{title}</h3>
         <div className='books_inlineContainer'>
         {bookList.map((book: BookType) => (
-            <BookCard {...book} />
+            <BookCard {...book} key={book.isbn} />
         ))}
         </div>
     </section>

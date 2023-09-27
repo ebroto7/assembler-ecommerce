@@ -17,6 +17,7 @@ export interface BookType {
     series?:           string;
     awards?:           string;
     img?:              string;
+    units:            number;
 }
 
 export enum Awards {

@@ -15,8 +15,8 @@ export function Router(props: any) {
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/home" element={<HomePage {...props} />} />
-                <Route path="/login" element={<CartPage />} />
-                <Route path="/cart" element={<LoginPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
         </BrowserRouter>
     );
