@@ -1,8 +1,17 @@
 import { useState } from "react"
 import { BookType } from "../../Types/book"
 import BuyButtonsStack from "../buyButtonsStack/BuyButtonsStack"
+import "./BookCard.styles.css"
 
 const BookCard = (book: BookType) => {  
+  const [isBuy, setIsBuy] = useState(false)
+
+  const handleCart = () => {
+    setIsBuy(current => !current)
+    if (!isBuy) console.log(book.title+' is in cart')
+    if (isBuy) console.log(book.title+' is not in cart')
+
+  }
 
   return (
       <article className="bookCard" key={book.id} > 
@@ -11,9 +20,12 @@ const BookCard = (book: BookType) => {
           <h2>{book.title}</h2>
           <h4>{book.author}</h4>
         </div >
-       <BuyButtonsStack 
+        {(!isBuy) && <button onClick={handleCart} className="bookCard_buyButton">Add to cart</button>}
+        {(isBuy) && <button onClick={handleCart} className="bookCard_buyButton">Remove from cart</button>}
+
+       {/* <BuyButtonsStack 
             units ={book.units}
-        />
+        /> */}
       </article>
   )
 }

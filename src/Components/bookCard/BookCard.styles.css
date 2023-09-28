@@ -1,0 +1,82 @@
+.bookCard {
+    display: flex;
+    flex-direction: column;
+    width: 12rem;
+    height: 18rem;
+    align-items: center;
+    margin: 0 0.5rem;
+    background-color: bisque;
+  
+    text-align: left;
+  
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow:  0 0 10px 0px black;
+  }
+  
+  .bookCard img {
+    height: 5rem;
+    width: 5rem;
+  
+  }
+  .bookCard_body h2 {
+    font-size: 1rem;
+  }
+  .bookCard_body h4 {
+    font-size: 0.6rem;
+  }
+  
+  .bookCard_cart_container {
+    display: flex;
+    flex-direction: column;
+  }
+  .bookCard_cart_container p {
+    margin: 0px 12px;
+    text-align: left;
+    font-size: 8px;
+  }
+  
+  
+  .bookCard_cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    margin: 4px 8px;
+  }
+  .bookCard_cart div {
+    display: flex;
+    flex-direction: row;
+    height: 32px;
+    background: var(--secondary);
+    border-radius: 8px;
+  
+  }
+  .bookCard_cart_quantity {
+    width: 32px;
+    margin: 0;
+    text-align: center;
+    line-height: 32px;
+  }
+  .bookCard_cart button {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border: 2px solid var(--secondaryLight);
+  }
+  
+  .bookCard_cart_buyBtn {
+    margin-left: 8px;
+    
+  }
+  
+  .errorMessage {
+    color: red;
+  }
+
+.bookCard_buyButton {
+    width: 140px;
+    margin: 10px;
+    background: var(--secondary-gradient);
+}

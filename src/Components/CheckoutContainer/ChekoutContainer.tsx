@@ -1,21 +1,28 @@
-import React from 'react'
 import { FC } from 'react'
 import "./checkoutContainer.styles.css";
-import { BookType } from '../../Types/book';
 
 
 type Props = {
     price: number
+    numberProducts: number,
 }
 
-export const ChekoutContainer: FC<Props> = ({price}) => {
+export const ChekoutContainer: FC<Props> = ({price, numberProducts}) => {
     
   return (
     <section className='cartPage_container'>
+      <div className='cartPage_infoContainer'>
+        <div className="cartPage_checkoutInfo">
+            <h4>total books:</h4>
+            <h4>{`${numberProducts} books`}</h4>
+        </div>
         <div className="cartPage_checkoutInfo">
             <h3>Subtotal:</h3>
             <h3>{`${price} €`}</h3>
         </div>
+
+      </div>
+        
         <button className='cartPage_chekoutButton'> Checkout </button>
     </section>
   )

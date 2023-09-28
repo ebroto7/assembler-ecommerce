@@ -7,14 +7,14 @@ import { LoginPage } from "../Pages/LoginPage";
 
 import Navbar from "../Components/Navbar";
 
-export function Router(props: any) {
+export function Router() {
     return (
         <BrowserRouter>
             <Navbar />
            
             <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/home" element={<HomePage {...props} />} />
+                <Route path="/home" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/cart" element={<CartPage />} />
             </Routes>

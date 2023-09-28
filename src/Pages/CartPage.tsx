@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
 import ChekoutContainer from '../Components/CheckoutContainer/ChekoutContainer'
 import booksList from '../Assets/db/db'
 import CheckoutBookContainer from '../Components/CheckoutBookContainer/CheckoutBookContainer'
 import { Link } from 'react-router-dom'
+import { useState, useEffect, FC } from 'react'
+import { BookType } from '../Types/book'
 
-type Props = {}
+import {IoArrowBackCircleOutline} from "react-icons/io5"
 
-export const CartPage = (props: Props) => {
+type Props = {
+  book: BookType,
+  units: number
+}
+
+export const CartPage = () => {
 
   const [totalPrice, setTotalPrice] = useState(0)
 
@@ -14,16 +20,16 @@ export const CartPage = (props: Props) => {
     <>
       <div className='cartPage_Header'>
       <Link to="/home"key ="home">
-						<button>Home</button>
+						<button><IoArrowBackCircleOutline /> Home</button>
 				</Link>   
       </div>
       <section className='cartPage_bookContainer'>
         {booksList.map((book) => (
-          <CheckoutBookContainer key={book.isbn} book={book}/>
+          <CheckoutBookContainer key={book.isbn} book={book} units={2}/>
         ))}
       </section>
      
-      <ChekoutContainer price={totalPrice} />
+      <ChekoutContainer price={totalPrice} numberProducts={4}/>
     </>
    
   )

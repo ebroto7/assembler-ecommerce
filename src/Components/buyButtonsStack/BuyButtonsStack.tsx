@@ -1,24 +1,17 @@
 import { useState } from 'react'
 import { FC } from 'react'
 
-type unitsProps = {
+type props = {
     units: number,
 }
 
-export const BuyButtonsStack: FC<unitsProps> = ({units}) => {
-
-
+export const BuyButtonsStack: FC<props> = ({units}) => {
     const [quantity, setQuantity] = useState<number>(0)
-
     const add = () => {
-        if (quantity < units) {
-            setQuantity(current => current + 1)
-        }
+        if (quantity < units) setQuantity(current => current + 1)
     }
     const rest = () => {
-        if (quantity > 0) {
-            setQuantity(current => current - 1)
-        }
+        if (quantity > 0) setQuantity(current => current - 1)
     }
     const buy = () => {
         // add to cart (locale storage)

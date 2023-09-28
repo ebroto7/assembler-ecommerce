@@ -12,14 +12,24 @@
     color: white;
     background: var(--primary);
 }
-
+.cartPage_infoContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 5px 0;
+}
 .cartPage_checkoutInfo {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
 }
 .cartPage_checkoutInfo h3 {
- margin: 1rem 3rem;
+ margin: 0;
+}
+.cartPage_checkoutInfo h4 {
+    margin: 0;
 }
 
 .cartPage_chekoutButton {
