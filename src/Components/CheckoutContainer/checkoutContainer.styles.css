@@ -1,4 +1,4 @@
-.cartPage_container {
+.cartPage_checkoutContainer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -7,8 +7,10 @@
     align-items: center;
     justify-content: center;
     height: 15vh;
+    min-height: 15vh;
     width: 100vw;
     border-radius: 1rem 1rem 0 0;
+    padding: 0.5rem 0;
     color: white;
     background: var(--primary);
 }

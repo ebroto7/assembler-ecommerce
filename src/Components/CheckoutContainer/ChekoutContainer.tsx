@@ -11,7 +11,7 @@ type Props = {
 export const ChekoutContainer: FC<Props> = ({price, numberProducts}) => {
     
   return (
-    <section className='cartPage_container'>
+    <section className='cartPage_checkoutContainer'>
       <div className='cartPage_infoContainer'>
         <div className="cartPage_checkoutInfo">
             <h4>total books:</h4>

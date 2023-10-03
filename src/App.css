@@ -15,8 +15,8 @@
   background: var(--primary-gradient-Alpha50);
   display: flex;
   justify-content: center;
-  align-items: center;
-} 
+  align-items: center; 
+}  
 .main {
   margin-top: 6rem;
   padding-top: 1rem;
@@ -68,10 +68,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .landigPage_container img {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 60%;
 }
 
 .landigPage_container  h1 {
@@ -79,8 +82,12 @@
   text-align: center;
 }
 
-.landigPage_container img {
-  width: 60%;
+.landigPage_container div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .landigPage_container button {
