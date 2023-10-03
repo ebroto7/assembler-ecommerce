@@ -21,7 +21,7 @@ export const booksList: BookType[] = [
     series: "series",
     awards: "National Book Award",
     img: img_1,
-    units: 10,
+    stock: 10,
 },
 {
     id: "dcb1e749-8a42-414b-a828-eddaffd75e86",
@@ -41,7 +41,7 @@ export const booksList: BookType[] = [
     series: "standalone",
     awards: "Booker Prize",
     img: img_1,
-    units: 5,
+    stock: 5,
 },
 {
     id: "014aeccb-2edc-4783-893e-b96d96b7a6db",
@@ -61,7 +61,7 @@ export const booksList: BookType[] = [
     series: "standalone",
     awards: "Pulitzer Prize",
     img: img_1,
-    units: 1,
+    stock: 1,
 },
 {
     id: "2913fc04-e9af-4ef9-b594-8a978ca7d930",
@@ -81,7 +81,7 @@ export const booksList: BookType[] = [
     series: "series",
     awards: "National Book Award",
     img: img_1,
-    units: 0,
+    stock: 0,
 },
 {
     id: "3075c6c7-cb97-43d9-b51c-8f043253d08c",
@@ -101,7 +101,7 @@ export const booksList: BookType[] = [
     series: "standalone",
     awards: "Pulitzer Prize",
     img: img_1,
-    units: 10,
+    stock: 10,
 },
 {
     id: "6bacb112-29b9-4fd4-8d3d-f46adf4706d9",
@@ -121,7 +121,7 @@ export const booksList: BookType[] = [
     series: "standalone",
     awards: "Booker Prize",
     img: img_1,
-    units: 3,
+    stock: 3,
 },
 {
     id: "035d032e-b7f6-4ce8-8ebe-469a61beb0b2",
@@ -141,7 +141,7 @@ export const booksList: BookType[] = [
     series: "series",
     awards: "National Book Award",
     img: img_1,
-    units: 7,
+    stock: 7,
 },
 {
     id: "15cd28a0-9000-4452-ad01-6ff7578d508f",
@@ -161,7 +161,7 @@ export const booksList: BookType[] = [
     series: "standalone",
     awards: "National Book Award",
     img: img_1,
-    units: 3,
+    stock: 3,
 },
 {
     id: "3438e55e-ae67-46c4-84cd-92280a8233ee",
@@ -181,7 +181,7 @@ export const booksList: BookType[] = [
     series: "series",
     awards: "National Book Award",
     img: img_1,
-    units: 4,
+    stock: 4,
 },
 {
     id: "5922e44e-ce7b-44b4-8b56-91e590762d85",
@@ -201,7 +201,7 @@ export const booksList: BookType[] = [
     series: "series",
     awards: "Booker Prize",
     img: img_1,
-    units: 10,
+    stock: 10,
 },
 ]
 

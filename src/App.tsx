@@ -4,9 +4,7 @@ import { Router } from './Routes/RouterPaths.routes'
 const App = () => {
 
   return (
-    <>
       <Router />
-    </>
   )
 }
 

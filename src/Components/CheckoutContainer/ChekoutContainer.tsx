@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import "./checkoutContainer.styles.css";
+import { currencyFormat } from '../../utils/utils';
 
 
 type Props = {
@@ -18,7 +19,7 @@ export const ChekoutContainer: FC<Props> = ({price, numberProducts}) => {
         </div>
         <div className="cartPage_checkoutInfo">
             <h3>Subtotal:</h3>
-            <h3>{`${price} €`}</h3>
+            <h3>{currencyFormat(price)}</h3>
         </div>
 
       </div>

@@ -1,35 +1,45 @@
 import ChekoutContainer from '../Components/CheckoutContainer/ChekoutContainer'
-import booksList from '../Assets/db/db'
 import CheckoutBookContainer from '../Components/CheckoutBookContainer/CheckoutBookContainer'
 import { Link } from 'react-router-dom'
-import { useState, useEffect, FC } from 'react'
-import { BookType } from '../Types/book'
+import {useContext, useState, useEffect } from 'react'
+import { CartContext, cartBook } from '../context/BookContext'
 
 import {IoArrowBackCircleOutline} from "react-icons/io5"
 
-type Props = {
-  book: BookType,
-  units: number
-}
+
 
 export const CartPage = () => {
+  const { cartItems } = useContext(CartContext)
 
-  const [totalPrice, setTotalPrice] = useState(0)
+  
+  const [totalBooks, setTotalBooks] = useState<number>(cartItems?.length)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
 
-  return (
+  useEffect(() => {
+
+    cartItems.forEach((book: cartBook) => {
+      let price: number = book.book.price * book.units
+      console.log("calculate= "+(book.book.price * book.units))
+      setTotalPrice(current => current + price)
+    });
+   
+  }, [totalBooks])
+    
+  
+   return (
     <>
-      <div className='cartPage_Header'>
-      <Link to="/home"key ="home">
-						<button><IoArrowBackCircleOutline /> Home</button>
-				</Link>   
+      <div className='pages_Header'>
+        <Link to="/home"key ="home">
+              <button><IoArrowBackCircleOutline /> Home</button>
+        </Link>   
       </div>
       <section className='cartPage_bookContainer'>
-        {booksList.map((book) => (
-          <CheckoutBookContainer key={book.isbn} book={book} units={2}/>
+        {cartItems.map((book) => (
+          <CheckoutBookContainer key={book.book.isbn} book={book.book} units={book.stock}/>
         ))}
       </section>
      
-      <ChekoutContainer price={totalPrice} numberProducts={4}/>
+      <ChekoutContainer price={totalPrice} numberProducts={totalBooks}/>
     </>
    
   )

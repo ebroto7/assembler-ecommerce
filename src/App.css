@@ -21,7 +21,6 @@
   margin-top: 6rem;
   padding-top: 1rem;
   width: 100vw;
-
 }
 
 .main_header {
@@ -29,6 +28,7 @@
   top: 0;
   left: 0;
   padding-top: 0.5rem;  
+  height: 9vh;
   width: 100%;
   background: var(--primary-gradient)
   
@@ -55,8 +55,8 @@
  font-family: 'Titillium Web', sans-serif;
 }
 .header-logo {
-  height: 3.8rem;
-  width: 3.8rem;
+  height: 8vh;
+  width: 8vh;
 }
 
 /* LANDING PAGE */
@@ -91,7 +91,7 @@
 /* HOME PAGE */
 .homePage_gotocart_Btn {
   position: fixed;
-  top: 6rem;
+  top: 16vh;
   right: 2rem;
   display: flex;
   justify-content: center;
@@ -107,7 +107,7 @@
 }
 .homePage_gotocart_Btn p {
   position: fixed;
-  top: 5.8rem;
+  top: 15.6vh;
   right: 1.8rem;
   width: 24px;
   height: 24px;
@@ -122,8 +122,6 @@
   text-align: center;
 
   box-shadow:  0 0 10px 0px black;
-
-
 }
 
 /* SEARCH BAR */
@@ -132,7 +130,7 @@
   padding: 0.5rem;
   justify-content: center;
   width: 100%;
-  height: 1.5rem;
+  height: 2.5vh;
   background: var(--primary-gradient);
 }
 
@@ -154,16 +152,56 @@
 
 /* CART PAGE  */
 
-.cartPage_Header {
+.pages_Header {
   display: flex;
-  flex-direction: column-reverse;
-  background-color: var(--primary-gradient);
-  height: 20vh;
+  flex-direction: row;
+  align-items: center;
+  background: var(--primary-gradient);
+  height: 10vh;
+  padding: 0 1rem;
 }
 
 .cartPage_bookContainer {
-  height: 60vh;
+  height: 75vh;
   overflow-y: scroll;
+}
+
+
+
+/* DETAIL PAGE */
+.cartPage_Header {
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailPage_mainContainer {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background: var(--primary);
+}
+.detailPage_imgContainer{
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(0deg, var(--primary) 50%, rgba(9,9,121,0) 100%);
+}
+.detailPage_roundImgContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary);
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+.detailPage_bookImg {
+  height: 140px;
+  width: 140px;
 }
 
 

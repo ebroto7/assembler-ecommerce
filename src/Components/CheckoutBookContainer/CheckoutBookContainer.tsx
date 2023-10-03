@@ -2,20 +2,23 @@ import { useState, useEffect } from 'react'
 import { FC } from 'react'
 import { BookType } from '../../Types/book'
 import "./checkoutBookContainer.styles.css"
-import {BiCartDownload} from "react-icons/bi"
-
+import { BiCartDownload } from "react-icons/bi"
+import { currencyFormat } from '../../utils/utils'
+currencyFormat
 type Props = {
     book: BookType
     units: number
 }
 
+// export const CheckoutBookContainer: FC<Props> = ({{price, img, title, author}, units}) => {
 export const CheckoutBookContainer: FC<Props> = ({book, units}) => {
     // units = book.units
 
     const [quantity, setQuantity] = useState<number>(1)
     const [totalPrice, setTotalPrice] = useState<number>(book.price)
     const add = () => {
-        if (quantity < units) setQuantity(current => current + 1)
+        if (quantity < book.stock) setQuantity(current => current + 1)
+        console.log("chechoutBookOcntainer book stock= "+book.stock)
     }
     const rest = () => {
         if (quantity > 0) setQuantity(current => current - 1)
@@ -28,6 +31,7 @@ export const CheckoutBookContainer: FC<Props> = ({book, units}) => {
     useEffect(() => {
         if (quantity === 0) setTotalPrice(current => current = book.price)
         setTotalPrice(current => current = book.price * quantity)
+        // units = quantity
     }, [quantity])
 
   return (
@@ -53,7 +57,7 @@ export const CheckoutBookContainer: FC<Props> = ({book, units}) => {
                 {units === 0 &&  <p className="bookCard_cart_message errorMessage">{"This book isn't available"}</p>}
             </div>
         </div >
-        <h3>{`${totalPrice} €`}</h3>
+        <h3>{currencyFormat(totalPrice)}</h3>
     </section>
   )
 }
