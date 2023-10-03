@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
-import BookInlineContainer from '../Components/bookInlineContainer/BookInlineContainer'
-import { BookType } from '../Types/book'
 import { Link } from 'react-router-dom'
 
+import { CartContext } from '../context/BookContext'
+
+import Navbar from '../Components/Navbar'
+import BookInlineContainer from '../Components/bookInlineContainer/BookInlineContainer'
 
 import { IoBagCheckOutline } from "react-icons/io5"
-import { CartContext } from '../context/BookContext'
-import Navbar from '../Components/Navbar'
 
 const bookFilters = ['Best seller', 'Best rated', 'Wish list']
 
@@ -14,7 +14,7 @@ const bookFilters = ['Best seller', 'Best rated', 'Wish list']
 
 export const HomePage = () => {
 
-  // const { cartItems } = useContext(CartContext)
+  const cartItems  = useContext(CartContext)
   // const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
 
   const [books, setBooks] = useState([])
@@ -42,7 +42,7 @@ export const HomePage = () => {
         <Link to="/cart" key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {/* <p>{cartNumber}</p>  */}
+            {cartItems && <p>{cartItems.bookList.length}</p> }
           </button>
         </Link>
 

@@ -1,19 +1,16 @@
 import { useParams, Link } from "react-router-dom"
-import { useState, useContext } from "react";
-import { BookType } from "../Types/book";
-import {IoArrowBackCircleOutline} from "react-icons/io5"
-import Navbar from "../Components/Navbar";
 
-import { CartContext } from '../context/BookContext'
 import booksList from "../Assets/db/db";
 import BuyBookButton from "../Components/buyBookButton/BuyBookButton";
+
+import {IoArrowBackCircleOutline} from "react-icons/io5"
 
 const DetailPage = () => {
     const {isbn: productISBN} = useParams()
     const book = booksList.find(({isbn}) => isbn === productISBN)
 
     console.log("detail page cart item units = "+book?.stock)
-    const [isBuy, setIsBuy] = useState(false)
+    // const [isBuy, setIsBuy] = useState(false)
 
   
 
@@ -25,7 +22,7 @@ const DetailPage = () => {
             <Link to="/home"key ="home">
                 <button><IoArrowBackCircleOutline /> Home</button>
             </Link>  
-            <BuyBookButton {...book}/>
+            {book && <BuyBookButton {...book}/>}
         </header>
         <article className="detailPage_imgContainer ">
             <div className="detailPage_roundImgContainer ">

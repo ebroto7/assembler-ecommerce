@@ -6,7 +6,7 @@ import { CartContext } from '../../context/BookContext'
 
 
 export const BuyBookButton: FC<BookType> = (book) => {
-    const { cartItems } = useContext(CartContext)
+    const  cartItems  = useContext(CartContext)
 
     const [isBuy, setIsBuy] = useState(false)
 
@@ -29,12 +29,13 @@ export const BuyBookButton: FC<BookType> = (book) => {
     function addToCart() {
         // console.log(book+' is in cart')
 
-        const buyBook: BookType = cartItems.find((cartBook) => cartBook == book)
-        console.log(buyBook + ' is in cart')
+        // const buyBook: BookType = cartItems.bookList.find((cartBook) => cartBook == book)
+        // console.log(buyBook + ' is in cart')
 
         {
-            cartItems.push({
+            cartItems?.bookList.push({
                 book: book,
+                isbn: book.isbn,
                 units: 3
             })
         }
