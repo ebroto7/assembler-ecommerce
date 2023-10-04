@@ -42,7 +42,7 @@ export const HomePage = () => {
         <Link to="/cart" key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {cartItems && <p>{cartItems.bookList.length}</p> }
+            {cartItems && <p>{cartItems.cartItems.length}</p> }
           </button>
         </Link>
 
