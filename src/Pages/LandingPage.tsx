@@ -12,11 +12,14 @@ const LandingPage = () => {
             <h1>STAR BOOK</h1>
         </div>
         <NavLink to="/home"key ="home">
-						<button>let's start</button>
+						<button className='startButton'>Let's start</button>
 				</NavLink>        
         <Link to="/login"key ="login">
 						<button>Login</button>
 				</Link>   
+        <Link to="/signup"key ="signup">
+						<button>Sign Up</button>
+				</Link> 
     </main>
   )
 }
