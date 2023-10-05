@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom"
 
 import booksList from "../Assets/db/db";
+// import { booksFromAPI } from "../utils/API";
 import BuyBookButton from "../Components/buyBookButton/BuyBookButton";
 
 import {IoArrowBackCircleOutline} from "react-icons/io5"
+import { BookType } from "../Types/book";
 
 const DetailPage = () => {
     const {isbn: productISBN} = useParams()
@@ -18,15 +20,15 @@ const DetailPage = () => {
     <>
         {/* <Navbar /> */}
 
-        <header className="pages_Header cartPage_Header">
+        <header className="cartPage_Header">
             <Link to="/home"key ="home">
-                <button><IoArrowBackCircleOutline /> Home</button>
+                <button><IoArrowBackCircleOutline />Home</button>
             </Link>  
-            {book && <BuyBookButton {...book}/>}
+             <BuyBookButton {...book!}/>
         </header>
         <article className="detailPage_imgContainer ">
             <div className="detailPage_roundImgContainer ">
-                    <img className="detailPage_bookImg" src={book?.img} alt={`${book?.title} image`} />
+                    <img className="detailPage_bookImg" src={book!.img} alt={`${book?.title} image`} />
             </div>
         </article> 
         <article className="detailPage_mainContainer ">

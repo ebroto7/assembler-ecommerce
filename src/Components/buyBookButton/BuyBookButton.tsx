@@ -6,47 +6,38 @@ import { CartContext } from '../../context/BookContext'
 
 
 export const BuyBookButton: FC<BookType> = (book) => {
-    const  cartContext  = useContext(CartContext)
+    const { cartItems, handleAddBook, removeFromCart } = useContext(CartContext)
+    //  const filterItems = 
+    cartItems.find((cartBook) => cartBook.book === book)
 
-    const [isBuy, setIsBuy] = useState(false)
+    let isBuyed = false
+    if (cartItems.find((cartBook) => cartBook.book === book) !== undefined) {
+        isBuyed = true
+    }
 
-    const handleCart = (event: any) => {
+    // const [isBuy, setIsBuy] = useState(isBuyed)
+
+    const AddBook = (event: any) => {
         event.preventDefault()
+        handleAddBook(book)
 
-        setIsBuy(current => !current)
+        // setIsBuy(current => !current)
+    }
 
-        if (!isBuy && book !== undefined) {
-            // addToCart()
-            //  setCartItems(current => current.push(book))
-        }
-        if (isBuy && book !== undefined) {
-            console.log(book.title + ' is not in cart')
-            // remove from buyed books array
-            // setCartItems()
-        }
-     }
+    const RemoveBook = (event: any) => {
+        event.preventDefault()
+        removeFromCart(book.isbn)
 
-    // function addToCart() {
-    //     // console.log(book+' is in cart')
+        // setIsBuy(current => !current)
+    }
 
-    //     // const buyBook: BookType = cartItems.bookList.find((cartBook) => cartBook == book)
-    //     // console.log(buyBook + ' is in cart')
 
-    //     {
-    //         cartContext?.bookList.push(
-    //             {
-    //             book: book,
-    //             isbn: book.isbn,
-    //             units: 1
-    //             }
-    //         )
-    //     }
-    // }
 
     return (
         <>
-            {(!isBuy) && <button onClick={handleCart} className="bookCard_buyButton">Add to cart</button>}
-            {(isBuy) && <button onClick={handleCart} className="bookCard_buyButton">Remove from cart</button>}
+             <button onClick={AddBook} className="bookCard_buyButton">Add to cart</button>
+          {/* {(!isBuy) && <button onClick={AddBook} className="bookCard_buyButton">Add to cart</button>} */}
+            {/* {(isBuy) && <button onClick={RemoveBook} className="bookCard_buyButton">Remove from cart</button>} */}
         </>
 
     )

@@ -18,21 +18,21 @@ export interface CartBookType {
 
 
 const initialArgs: CartBookType[] = [
-   {
-      book: booksList[5],
-      isbn: booksList[5].isbn,
-      units: 1,
-   },
-   {
-      book: booksList[8],
-      isbn: booksList[8].isbn,
-      units: 1
-   },        
-   {
-      book: booksList[1],
-      isbn: booksList[1].isbn,
-      units: 1
-   }
+   // {
+   //    book: booksList[5],
+   //    isbn: booksList[5].isbn,
+   //    units: 1,
+   // },
+   // {
+   //    book: booksList[8],
+   //    isbn: booksList[8].isbn,
+   //    units: 1
+   // },        
+   // {
+   //    book: booksList[1],
+   //    isbn: booksList[1].isbn,
+   //    units: 1
+   // }
 ]
 
 
@@ -58,30 +58,60 @@ interface RemoveBook {
 }
 type Action = AddBook | RemoveBook
 
-function bookReducer(bookList: typeof initialArgs , action: Action) {
-      switch (action.type) {
-         case Actions.AddBook: {
-            bookList.map((book) => {
-               if (book.isbn === action.payload.isbn) {
-                  return action.payload.units += 1
-               } else {
-                  return [...bookList, {...action.payload}]
-               }
-            })
-         }
+// function bookReducer(bookList: CartBookType[] , action: Action) {
+//       switch (action.type) {
+//          case Actions.AddBook: {
+//             return bookList.map((book) => {
+//                if (book.isbn === action.payload.isbn) {
+//                   return {...book, units: book.units += 1}
+//                } else {
+//                   return book
+//                }
+//             })
+//          }
 
+//          case Actions.RemoveBook: {
+//                if (action.payload.units > 1) {
+//                   return bookList.map((book) => {
+//                      if (book.isbn === action.payload.isbn) {
+//                         return {...book, units: book.units -= 1}
+//                      } 
+//                   })                  
+//                } else {
+//                   const updatedList = bookList.filter(
+//                      (book) => book.isbn !== action.payload.isbn 
+//                   )
+//                   return updatedList      
+//                }	
+//          }
 
-         case Actions.RemoveBook: {
-               if (action.payload.units > 1) {
-                  return action.payload.units -= 1
-               } else {
-                  return bookList.filter((book) => book.isbn !== action.payload.isbn )              
-               }	
-         }
+//          default: 
+//             return bookList
+//       }
+// }
 
-         default: 
-            return bookList
+function bookReducer(bookList: CartBookType[], action: Action) {
+   switch (action.type) {
+      case Actions.AddBook: {
+         return bookList.map((book) => {
+            console.log("bookReducer: "+book)
+            if (book.isbn === action.payload.isbn) {
+               return {...book, units: book.units +=1 }
+            } else {
+               return book
+            }
+         })
       }
+
+      case Actions.RemoveBook: {
+         const updatedList = bookList.filter(
+            (book) => book.isbn !== action.payload.isbn
+         )
+         return updatedList
+      } 
+      default:
+         return bookList;
+   }
 }
 
 const init = () => {
@@ -105,12 +135,10 @@ export const CartContext = createContext<BookStateProps>({
 })
 
 
-
-
-
 const BookProvider: FC<PropsWithChildren> = ({children}) => {
-   const [cartItems, dispatch] = useReducer(bookReducer, initialArgs, init);
 
+   const [cartItems, dispatch] = useReducer(bookReducer, {}, init);
+   console.log("cartCOntext: "+cartItems)
      
       useEffect(() => {
          localStorage.setItem("books", JSON.stringify(cartItems));
@@ -120,13 +148,19 @@ const BookProvider: FC<PropsWithChildren> = ({children}) => {
       const handleAddBook = (book: BookType) => {
          dispatch({
             type: Actions.AddBook,
-            payload: book
-         })
-      }
+            payload: {
+               book,
+               isbn: book.isbn,
+               units: 1
+            },
+         });
+      };
        const removeFromCart = (isbn: string) => {
          dispatch({
             type: Actions.RemoveBook,
-            payload: isbn
+            payload: {
+               isbn,
+            }
          });
       };
 

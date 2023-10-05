@@ -30,7 +30,7 @@ export const HomePage = () => {
 
   }, [])
 
-
+  console.log(cartItems.cartItems.length)
   useEffect(() => {
     // setCartNumber(cartItems.length)
   }, [])

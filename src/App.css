@@ -94,7 +94,6 @@
   background: var(--secondary-gradient);
 }
 
-
 .pages_Header {
   display: flex;
   flex-direction: row;
@@ -211,7 +210,6 @@
 }
 
 /* CART PAGE  */
-
 .cartPage_bookContainer {
   height: 75vh;
   overflow-y: scroll;
@@ -223,9 +221,13 @@
 .cartPage_Header {
   display: flex;
   flex-direction: row ;
-  justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  justify-content: space-between;
+  height: 10vh;
+  width:95vw;
+  padding: 0 1rem ;
+  background: var(--primary-gradient);
+
 }
 
 .detailPage_mainContainer {

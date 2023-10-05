@@ -10,26 +10,26 @@ import {IoArrowBackCircleOutline} from "react-icons/io5"
 
 
 export const CartPage = () => {
-  const  cartContext  = useContext(CartContext)
+  const  {cartItems}  = useContext(CartContext)
   
 
   
   const [totalBooks, setTotalBooks] = useState<number>(0)
   const [totalPrice, setTotalPrice] = useState<number>(0)
   useEffect(() => {
-    if (cartContext?.cartItems != undefined) {
-      setTotalBooks(cartContext.cartItems.length)
+    if (cartItems != undefined) {
+      setTotalBooks(cartItems.length)
     }
-  }, [])
+  }, [cartItems])
 
   useEffect(() => {
-
-    cartContext?.cartItems.forEach((book: CartBookType) => {
-      let price: number = book.book.price * book.units
+    let price: number = 0
+    cartItems.forEach((book: CartBookType) => {
+       price += book.book.price * book.units
       console.log("calculate= "+(book.book.price * book.units))
-      setTotalPrice(current => current + price)
+      
     });
-   
+    setTotalPrice(price)
   }, [totalBooks])
     
   
@@ -41,7 +41,7 @@ export const CartPage = () => {
         </Link>   
       </div>
       <section className='cartPage_bookContainer'>
-        {cartContext?.cartItems.map((book) => (
+        {cartItems.map((book) => (
 
           <CheckoutBookContainer key={book.book.isbn} book={book.book} units={book.book.stock}/>
         ))}

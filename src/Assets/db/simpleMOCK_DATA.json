@@ -17,9 +17,10 @@
                 "bestseller": true,
                 "series": "series",
                 "awards": "National Book Award",
-                "img": "./src/Assets/Images/525-5253539_3d-number-1-png.png",
+                "img": "https://imagessl1.casadellibro.com/a/l/s7/41/9788419089441.webp",
                 "stock": 4
             },
+            
             {
                 "id": "dcb1e749-8a42-414b-a828-eddaffd75e86",
                 "title": "Rev",
