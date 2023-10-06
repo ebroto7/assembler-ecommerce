@@ -11,19 +11,22 @@ import "./BookCard.styles.css"
 // }
 
 
-const BookCard = (book: BookType) => {  
+const BookCard = (book: BookType) => {
 
   return (
     <Link to={`/product/${book.isbn}`} key={book.isbn}>
-      <article className="bookCard" key={book.id} > 
+      <article className="bookCard" key={book.isbn} >
+        <div className="bookCard_info">
           <img src={book.img} alt={`${book.title} image`} />
           <div className="bookCard_body">
             <h2>{book.title}</h2>
             <h4>{book.author}</h4>
-            <p> {currencyFormat(book.price)} </p>  
+            <p> {currencyFormat(book.price)} </p>
           </div >
-          <BuyBookButton {...book}/>
-      </article> 
+        </div>
+
+        <BuyBookButton {...book} />
+      </article>
     </Link>
   )
 }

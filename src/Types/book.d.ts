@@ -13,7 +13,7 @@ export interface BookType {
     format?:           string;
     rating?:           number;
     description:      string;
-    bestseller?:       boolean;
+    bestseller:       boolean;
     series?:           string;
     awards?:           string;
     img?:              string;

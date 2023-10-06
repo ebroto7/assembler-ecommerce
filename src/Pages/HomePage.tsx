@@ -8,15 +8,22 @@ import BookInlineContainer from '../Components/bookInlineContainer/BookInlineCon
 
 import { IoBagCheckOutline } from "react-icons/io5"
 
-const bookFilters = ['Best seller', 'Best rated', 'Wish list']
+const bookFilters = ['Best seller', 'Best rated', 'Wish list', 'Science']
+
+enum BookFilters {
+  BestSeller = 'Best seller',
+  BestRated = 'Best rated',
+  WishList = 'Wish list',
+  Science = "Science"
+}
 
 // type Props = {}
 
 export const HomePage = () => {
 
-  const cartItems  = useContext(CartContext)
-  // const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
-
+  const {cartItems, numberBooksOnCart}  = useContext(CartContext)
+  //  const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
+  console.log("HomePage numberBooksOnCart:"+numberBooksOnCart)
   const [books, setBooks] = useState([])
   useEffect(() => {
     const url = 'http://localhost:3000/books'
@@ -30,10 +37,10 @@ export const HomePage = () => {
 
   }, [])
 
-  console.log(cartItems.cartItems.length)
-  useEffect(() => {
-    // setCartNumber(cartItems.length)
-  }, [])
+  // console.log(cartItems.length)
+  // useEffect(() => {
+  //    setCartNumber(cartItems.length)
+  // }, [])
 
   return (
     <>
@@ -42,13 +49,15 @@ export const HomePage = () => {
         <Link to="/cart" key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {cartItems && <p>{cartItems.cartItems.length}</p> }
+            {cartItems && <p>{numberBooksOnCart}</p> }
           </button>
         </Link>
 
 
         {bookFilters.map((filter) => (
           <BookInlineContainer key={filter} title={filter} bookList={books} />
+          // <BookInlineContainer key={filter} title={filter} bookList={books.filter((book)=>book.bestseller === true )} />
+
         ))}
       </main>
     </>

@@ -10,29 +10,8 @@ import {IoArrowBackCircleOutline} from "react-icons/io5"
 
 
 export const CartPage = () => {
-  const  {cartItems}  = useContext(CartContext)
-  
+  const  {cartItems, totalPrice, numberBooksOnCart}  = useContext(CartContext)
 
-  
-  const [totalBooks, setTotalBooks] = useState<number>(0)
-  const [totalPrice, setTotalPrice] = useState<number>(0)
-  useEffect(() => {
-    if (cartItems != undefined) {
-      setTotalBooks(cartItems.length)
-    }
-  }, [cartItems])
-
-  useEffect(() => {
-    let price: number = 0
-    cartItems.forEach((book: CartBookType) => {
-       price += book.book.price * book.units
-      console.log("calculate= "+(book.book.price * book.units))
-      
-    });
-    setTotalPrice(price)
-  }, [totalBooks])
-    
-  
    return (
     <>
       <div className='pages_Header'>
@@ -41,13 +20,18 @@ export const CartPage = () => {
         </Link>   
       </div>
       <section className='cartPage_bookContainer'>
-        {cartItems.map((book) => (
-
-          <CheckoutBookContainer key={book.book.isbn} book={book.book} units={book.book.stock}/>
+        {(cartItems !== null) && 
+        <div>
+          {/* <img src="" alt="" /> */}
+           <h3>your cart is empty</h3>
+        </div>
+        }
+        {cartItems && cartItems.map((book) => (
+          <CheckoutBookContainer key={book.book.isbn} book={book} />
         ))}
       </section>
      
-      <ChekoutContainer price={totalPrice} numberProducts={totalBooks}/>
+      <ChekoutContainer price={totalPrice} numberProducts={numberBooksOnCart}/>
     </>
    
   )
