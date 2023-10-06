@@ -9,7 +9,7 @@ import BookInlineContainer from '../Components/bookInlineContainer/BookInlineCon
 
 import { IoBagCheckOutline } from "react-icons/io5"
 
-const bookFilters = ['Best seller', 'Best rated', 'Wish list', 'Science']
+const bookFilters = ['Best seller','fiction', 'Best rated']
 
 enum BookFilters {
   BestSeller = 'Best seller',
