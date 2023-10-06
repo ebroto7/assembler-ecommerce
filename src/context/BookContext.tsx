@@ -164,6 +164,7 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
       console.log("local storage set items: ")
    }, [cartItems]);
 
+
    useEffect(() => {
       console.log("use efect setTotalPrice + setNumberBooks")
 
