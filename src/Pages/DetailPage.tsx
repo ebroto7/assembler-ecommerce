@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom"
-import { useEffect, useState } from "react";
-
+import { apiContext } from "../context/APIContext";
 // import booksList from "../Assets/db/db";
 // import { booksFromAPI } from "../utils/API";
 import BuyBookButton from "../Components/buyBookButton/BuyBookButton";
@@ -10,21 +9,9 @@ import { BookType } from "../Types/book";
 
 const DetailPage = () => {
     const { isbn: productISBN } = useParams()
+    const {apiBooks} = apiContext()
 
-    useEffect(() => {
-        const url = 'http://localhost:3000/books'
-        const getProducts = async () => {
-            const response = await fetch(url);
-            const data = await response.json();
-            console.log("json data= " + data)
-            setBooks(data)
-        }
-        getProducts();
-
-    }, [])
-
-    const [books, setBooks] = useState([])
-    let book: BookType = books.find(({ isbn }) => isbn === productISBN)!
+    let book: BookType = apiBooks.find(({ isbn }) => isbn === productISBN)!
     console.log("useparamsisbn= "+productISBN)
     console.log("fetchbookisbn= "+book.isbn)
 
