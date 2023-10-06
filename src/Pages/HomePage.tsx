@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { CartContext } from '../context/BookContext'
+import { bookContext } from '../context/BookContext'
+import { apiContext} from '../context/APIContext'
 
 import Navbar from '../Components/Navbar'
 import BookInlineContainer from '../Components/bookInlineContainer/BookInlineContainer'
@@ -21,21 +22,12 @@ enum BookFilters {
 
 export const HomePage = () => {
 
-  const {cartItems, numberBooksOnCart}  = useContext(CartContext)
+  const {apiBooks} = apiContext()
+
+  const {cartItems, numberBooksOnCart}  = bookContext()
   //  const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
   console.log("HomePage numberBooksOnCart:"+numberBooksOnCart)
-  const [books, setBooks] = useState([])
-  useEffect(() => {
-    const url = 'http://localhost:3000/books'
-    const getProducts = async () => {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log("json data= " + data)
-      setBooks(data)
-    }
-    getProducts();
 
-  }, [])
 
   // console.log(cartItems.length)
   // useEffect(() => {
@@ -55,7 +47,7 @@ export const HomePage = () => {
 
 
         {bookFilters.map((filter) => (
-          <BookInlineContainer key={filter} title={filter} bookList={books} />
+          <BookInlineContainer key={filter} title={filter} bookList={apiBooks} />
           // <BookInlineContainer key={filter} title={filter} bookList={books.filter((book)=>book.bestseller === true )} />
 
         ))}

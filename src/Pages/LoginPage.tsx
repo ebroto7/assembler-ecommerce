@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
-
-
 import {IoArrowBackCircleOutline} from "react-icons/io5"
 
 // type Props = {}
 
 export const LoginPage = () => {
+
   return (
       <main className='signUpPage_container'>
         <header className="pages_Header">

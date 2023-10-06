@@ -7,25 +7,27 @@ import { LoginPage } from "../Pages/LoginPage";
 import { SignUpPage } from "../Pages/SignUpPage";
 
 import { BookProvider } from "../context/BookContext";
+import { APIbooksProvider } from "../context/APIContext"
 import DetailPage from "../Pages/DetailPage";
 
 export function Router() {
     return (
-        <BookProvider >
-            <BrowserRouter>
-            
-                <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/home" element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/signup" element={<SignUpPage />} />
-                    <Route path="/cart" element={<CartPage />} />
-                    <Route path="/product">
-                        <Route path=":isbn" element={<DetailPage />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </BookProvider>
-       
+        <APIbooksProvider> 
+            <BookProvider >
+                <BrowserRouter>
+                
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignUpPage />} />
+                        <Route path="/cart" element={<CartPage />} />
+                        <Route path="/product">
+                            <Route path=":isbn" element={<DetailPage />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </BookProvider>
+        </APIbooksProvider>
     );
 }
