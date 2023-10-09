@@ -11,6 +11,9 @@ import {IoArrowBackCircleOutline} from "react-icons/io5"
 
 export const CartPage = () => {
   const  {cartItems, totalPrice, numberBooksOnCart}  = useContext(CartContext)
+  console.log("detail page"+cartItems.length)
+  console.log("detail page"+totalPrice)
+  console.log("detail page"+numberBooksOnCart)
 
    return (
     <>

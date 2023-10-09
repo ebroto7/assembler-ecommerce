@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { bookContext } from '../context/BookContext'
 import { apiContext} from '../context/APIContext'
@@ -14,11 +14,9 @@ const bookFilters = ['Best seller','fiction', 'Best rated']
 enum BookFilters {
   BestSeller = 'Best seller',
   BestRated = 'Best rated',
-  WishList = 'Wish list',
+  // WishList = 'Wish list',
   Science = "Science"
 }
-
-// type Props = {}
 
 export const HomePage = () => {
 
@@ -31,8 +29,8 @@ export const HomePage = () => {
 
   console.log(cartItems.length)
   useEffect(() => {
-     setCartNumber(cartItems.length)
-  }, [cartItems])
+    //  setCartNumber(cartItems.length)
+  }, [numberBooksOnCart])
 
   return (
     <>
@@ -41,14 +39,12 @@ export const HomePage = () => {
         <Link to="/cart" key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {cartItems && <p>{cartNumber}</p> }
+            {numberBooksOnCart && <p>{numberBooksOnCart}</p> }
           </button>
         </Link>
 
         {bookFilters.map((filter) => (
           <BookInlineContainer key={filter} title={filter} bookList={apiBooks} />
-          // <BookInlineContainer key={filter} title={filter} bookList={books.filter((book)=>book.bestseller === true )} />
-
         ))}
       </main>
     </>

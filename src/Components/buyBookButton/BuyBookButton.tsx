@@ -34,8 +34,6 @@ export const BuyBookButton: FC<BookType> = (book) => {
         setIsBuy(current => !current)
     }
 
-
-
     return (
         <>
             {/* <button onClick={AddBook} className="bookCard_buyButton">Add to cart</button> */}

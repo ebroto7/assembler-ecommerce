@@ -17,23 +17,7 @@ export interface CartBookType {
 }
 
 
-const initialArgs: CartBookType[] = [
-   // {
-   //    book: booksList[5],
-   //    isbn: booksList[5].isbn,
-   //    units: 1,
-   // },
-   // {
-   //    book: booksList[8],
-   //    isbn: booksList[8].isbn,
-   //    units: 1
-   // },        
-   // {
-   //    book: booksList[1],
-   //    isbn: booksList[1].isbn,
-   //    units: 1
-   // }
-]
+const initialArgs: CartBookType[] = {}
 
 
 enum Actions {
@@ -81,13 +65,11 @@ function bookReducer(bookList: CartBookType[], action: Action) {
 
    switch (action.type) {
       case Actions.AddBook: {
-         console.log("entro en add book")
          const isOnCart = bookList.find(
             (cartBook) => cartBook.isbn === action.payload.isbn
          )
          if (isOnCart) {
             isOnCart.units += 1
-            console.log("bookReducerfunc add books change, units: "+isOnCart.units)
          }
          if (!isOnCart) {
             bookList.push({
@@ -100,24 +82,19 @@ function bookReducer(bookList: CartBookType[], action: Action) {
       }
 
       case Actions.restUnits: {
-         console.log("entro en rest unit book")
          const isOnCart = bookList.find(
             (cartBook) => cartBook.isbn === action.payload.isbn
          )
          if (isOnCart && isOnCart.units > 0) {
             isOnCart.units -= 1
-            console.log("bookReducer func rest units, units: "+isOnCart.units)
-
          }
          return bookList
       }
 
       case Actions.RemoveBook: {
-         console.log("entro en remove book")
          const isOnCart = bookList.findIndex(
             (cartBook) => cartBook.isbn === action.payload.isbn
          )
-         console.log("remove book: "+isOnCart+" " +bookList.splice(isOnCart,1))
          return bookList.splice(isOnCart,1)
       }
       default:
@@ -156,28 +133,25 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
 
    const [totalPrice, setTotalPrice] = useState<number>(0)
    const [numberBooksOnCart, setNumberBooksOnCart] = useState<number>(0)
+   console.log("book context " +numberBooksOnCart)
 
    const [cartItems, dispatch] = useReducer(bookReducer, {}, init);
+   console.log("cartitems " +cartItems)
+
+
+   const calculatedTotal = () => {
+      let calculatedPrice = totalPrice
+      let numberBooks = numberBooksOnCart
+      cartItems.map((book) => {
+         calculatedPrice += (book.units * book.book.price)
+         numberBooks += book.units
+      })
+   }
 
    useEffect(() => {
       localStorage.setItem("books", JSON.stringify(cartItems));
-      console.log("local storage set items: ")
-   }, [cartItems]);
-
-
-   useEffect(() => {
-      console.log("use efect setTotalPrice + setNumberBooks")
-
-      let calculatePrice = 0
-      let numberBooks = 0
-      cartItems.map((book) => {
-         calculatePrice += (book.units * book.book.price)
-         numberBooks += book.units
-      })
-      setTotalPrice(calculatePrice)
-      setNumberBooksOnCart(numberBooks)
-      
-   }, [cartItems]);
+      console.log("book contect usesefect")
+   }, [cartItems, totalPrice, numberBooksOnCart]);
 
 
    const handleAddBook = (book: BookType) => {
