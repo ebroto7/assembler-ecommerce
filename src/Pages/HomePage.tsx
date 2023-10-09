@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 import { bookContext } from '../context/BookContext'
 import { apiContext} from '../context/APIContext'
@@ -25,14 +25,14 @@ export const HomePage = () => {
   const {apiBooks} = apiContext()
 
   const {cartItems, numberBooksOnCart}  = bookContext()
-  //  const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
+   const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
   console.log("HomePage numberBooksOnCart:"+numberBooksOnCart)
 
 
-  // console.log(cartItems.length)
-  // useEffect(() => {
-  //    setCartNumber(cartItems.length)
-  // }, [])
+  console.log(cartItems.length)
+  useEffect(() => {
+     setCartNumber(cartItems.length)
+  }, [cartItems])
 
   return (
     <>
@@ -41,10 +41,9 @@ export const HomePage = () => {
         <Link to="/cart" key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {cartItems && <p>{numberBooksOnCart}</p> }
+            {cartItems && <p>{cartNumber}</p> }
           </button>
         </Link>
-
 
         {bookFilters.map((filter) => (
           <BookInlineContainer key={filter} title={filter} bookList={apiBooks} />

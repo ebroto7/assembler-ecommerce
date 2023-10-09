@@ -18,7 +18,7 @@ const LandingPage = () => {
 						<button>Login</button>
 				</Link>   
         <Link to="/signup"key ="signup">
-						<button>Sign Up</button>
+						<button disabled>Sign Up</button>
 				</Link> 
     </main>
   )

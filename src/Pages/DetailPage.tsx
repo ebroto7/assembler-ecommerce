@@ -8,7 +8,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5"
 import { BookType } from "../Types/book";
 
 const DetailPage = () => {
-    const { isbn: productISBN } = useParams()
+    const { isbn: productISBN } = useParams<{isbn: string}>()
     const {apiBooks} = apiContext()
 
     const book = productISBN 
