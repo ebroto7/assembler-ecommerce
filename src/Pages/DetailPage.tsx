@@ -11,9 +11,13 @@ const DetailPage = () => {
     const { isbn: productISBN } = useParams()
     const {apiBooks} = apiContext()
 
-    let book: BookType = apiBooks.find(({ isbn }) => isbn === productISBN)!
-    console.log("useparamsisbn= "+productISBN)
-    console.log("fetchbookisbn= "+book.isbn)
+    const book = productISBN 
+    ? apiBooks.find(({ isbn }) => isbn === productISBN)
+    : undefined
+
+    if (!book) return null
+
+    const { title, author, description, img } = book
 
     return (
         <>
@@ -27,13 +31,13 @@ const DetailPage = () => {
             </header>
             <article className="detailPage_imgContainer ">
                 <div className="detailPage_roundImgContainer ">
-                    <img className="detailPage_bookImg" src={book.img} alt={`${book.title} image`} />
+                    <img className="detailPage_bookImg" src={img} alt={`${title} image`} />
                 </div>
             </article>
             <article className="detailPage_mainContainer ">
-                <h1>{book.title}</h1>
-                <h2>{book.author}</h2>
-                <p>{book.description}</p>
+                <h1>{title}</h1>
+                <h2>{author}</h2>
+                <p>{description}</p>
                 <h1>your book with ISBN: {productISBN}</h1>
             </article>
         </>
