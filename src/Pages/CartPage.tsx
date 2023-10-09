@@ -6,14 +6,21 @@ import { CartContext } from '../context/BookContext'
 
 import { CartBookType } from '../context/BookContext'
 import {IoArrowBackCircleOutline} from "react-icons/io5"
+import {MdOutlineRemoveShoppingCart} from "react-icons/md"
 
 
 
 export const CartPage = () => {
   const  {cartItems, totalPrice, numberBooksOnCart}  = useContext(CartContext)
-  console.log("detail page"+cartItems.length)
-  console.log("detail page"+totalPrice)
-  console.log("detail page"+numberBooksOnCart)
+  console.log("detail page",cartItems)
+
+  useEffect(() => {
+    console.log("detail page",cartItems.length)
+    console.log("detail page",totalPrice)
+    console.log("detail page",numberBooksOnCart)
+  }, [cartItems, totalPrice, numberBooksOnCart])
+
+ 
 
    return (
     <>
@@ -23,9 +30,9 @@ export const CartPage = () => {
         </Link>   
       </div>
       <section className='cartPage_bookContainer'>
-        {(cartItems !== null) && 
+        {(cartItems.length == 0) && 
         <div>
-          {/* <img src="" alt="" /> */}
+            <h1><MdOutlineRemoveShoppingCart/></h1>          
            <h3>your cart is empty</h3>
         </div>
         }

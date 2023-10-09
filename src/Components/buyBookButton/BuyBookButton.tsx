@@ -1,4 +1,4 @@
-import { FC, useState, useContext } from 'react'
+import { FC, useState, useContext, useEffect } from 'react'
 import { BookType } from '../../Types/book'
 import { CartContext } from '../../context/BookContext'
 
@@ -7,18 +7,22 @@ import { CartContext } from '../../context/BookContext'
 
 export const BuyBookButton: FC<BookType> = (book) => {
     const { cartItems, handleAddBook, removeFromCart } = useContext(CartContext)
-    const filterItems = cartItems.find((cartBook) => cartBook.book === book)
+    const filterItems = cartItems.find((cartBook) => cartBook.book.isbn === book.isbn)
 
-    let isBuyed: boolean
-    if (filterItems !== undefined) {
-        isBuyed = true
-        console.log("buyButtonBook-is buyed!")
-    } else {
-        console.log("buyButtonBook-not buyed!")
-        isBuyed = false
-    }
+console.log("buybook",    localStorage.getItem('books')
+)
+    useEffect(() => {
+        if (filterItems !== undefined) {
+            setIsBuy(true)
+            console.log("buyButtonBook-is buyed!")
+        } else {
+            console.log("buyButtonBook-not buyed!")
+            setIsBuy(false)
+        }
+    },[])
+  
 
-    const [isBuy, setIsBuy] = useState(isBuyed)
+    const [isBuy, setIsBuy] = useState(false)
 
     const AddBook = (event: any) => {
         event.preventDefault()

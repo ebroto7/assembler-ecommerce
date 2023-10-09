@@ -23,14 +23,14 @@ export const HomePage = () => {
   const {apiBooks} = apiContext()
 
   const {cartItems, numberBooksOnCart}  = bookContext()
-   const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
+  const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
   console.log("HomePage numberBooksOnCart:"+numberBooksOnCart)
 
 
   console.log(cartItems.length)
   useEffect(() => {
-    //  setCartNumber(cartItems.length)
-  }, [numberBooksOnCart])
+    localStorage.getItem('books')
+  }, [cartNumber, cartItems])
 
   return (
     <>
@@ -39,10 +39,10 @@ export const HomePage = () => {
         <Link to="/cart" key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {numberBooksOnCart && <p>{numberBooksOnCart}</p> }
+            {cartNumber === 0 ? <p>{0}</p> : <p>{cartNumber}</p> }
           </button>
         </Link>
-
+        
         {bookFilters.map((filter) => (
           <BookInlineContainer key={filter} title={filter} bookList={apiBooks} />
         ))}

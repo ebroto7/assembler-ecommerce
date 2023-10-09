@@ -5,6 +5,7 @@ import { CartBookType, CartContext } from '../../context/BookContext'
 import { BookType } from '../../Types/book'
 import "./checkoutBookContainer.styles.css"
 import { BiCartDownload } from "react-icons/bi"
+import {GoTrash} from 'react-icons/go'
 import { currencyFormat } from '../../utils/utils'
 type Props = {
     book: CartBookType
@@ -14,8 +15,7 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
 
     const { cartItems, handleAddBook, removeFromCart, restBookUnits } = useContext(CartContext)
 
-
-    const [totalPrice, setTotalPrice] = useState<number>(book.book.price)
+    const [bookPrice, setBookPrice] = useState<number>(book.book.price)
     const add = () => {
         if (book.units < book.book.stock) {
             console.log("chechoutBookOcntainer book stock= " + book.book.stock)
@@ -32,8 +32,8 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
     }
 
     useEffect(() => {
-        if (book.units === 0) setTotalPrice(current => current = book.book.price)
-        setTotalPrice(book.book.price * book.units)
+        if (book.units === 0) setBookPrice(current => current = book.book.price)
+        setBookPrice(book.book.price * book.units)
     }, [cartItems])
 
     return (
@@ -52,14 +52,14 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
                         <button
                             className="bookCard_cart_buyBtn"
                             onClick={reset}
-                        > X
+                        > <GoTrash />
                         </button>
                     </div>
                     {book.book.stock < 4 && book.book.stock > 0 && <p className="bookCard_cart_message">{`Only available: ${book.book.stock}units`}</p>}
                     {book.book.stock === 0 && <p className="bookCard_cart_message errorMessage">{"This book isn't available"}</p>}
                 </div>
             </div >
-            <h3>{currencyFormat(totalPrice)}</h3>
+            <h3>{currencyFormat(bookPrice)}</h3>
         </section>
     )
 }
