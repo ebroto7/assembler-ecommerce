@@ -34,7 +34,7 @@ function SearchPage({ }: Props) {
             <section>
                 <h2 className='searchPage_Title'>{`Search by title: ${query}`}</h2>
                 <ul className='searchPage_BooksContainer'>
-                    {(query.length > 1) &&apiBooks.filter(book => {
+                    {(query.length > 1) && apiBooks.filter(book => {
                         if(!query) return true
                         const bookTitle = book.title.toLocaleLowerCase()
                         return bookTitle.includes(query.toLocaleLowerCase())

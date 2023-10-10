@@ -1,30 +1,33 @@
 import { FC } from 'react'
 import "./checkoutContainer.styles.css";
 import { currencyFormat } from '../../utils/utils';
+import { Link } from 'react-router-dom';
 
 
 type Props = {
-    price: number
-    numberProducts: number,
+  price: number
+  numberProducts: number,
 }
 
-export const ChekoutContainer: FC<Props> = ({price, numberProducts}) => {
-    
+export const ChekoutContainer: FC<Props> = ({ price, numberProducts }) => {
+
   return (
     <section className='cartPage_checkoutContainer'>
       <div className='cartPage_infoContainer'>
         <div className="cartPage_checkoutInfo">
-            <h4>total books:</h4>
-            <h4>{`${numberProducts} books`}</h4>
+          <h4>total books:</h4>
+          <h4>{`${numberProducts} books`}</h4>
         </div>
         <div className="cartPage_checkoutInfo">
-            <h3>Subtotal:</h3>
-            <h3>{currencyFormat(price)}</h3>
+          <h3>Subtotal:</h3>
+          <h3>{currencyFormat(price)}</h3>
         </div>
 
       </div>
-        
+
+      <Link to="/private/checkout" className='cartPage_checkoutContainer_Link' >
         <button className='cartPage_chekoutButton'> Checkout </button>
+      </Link>
     </section>
   )
 }
