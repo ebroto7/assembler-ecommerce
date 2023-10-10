@@ -3,16 +3,11 @@ import BuyBookButton from "../buyBookButton/BuyBookButton"
 import { Link } from "react-router-dom"
 import { currencyFormat } from "../../utils/utils"
 import "./BookCard.styles.css"
+import { useId } from "react"
 
-// const item4: cartBookType ={ 
-//   book: booksList[1] ,
-//   isbn: booksList[1].isbn,
-//   units: 4
-// }
 
 
 const BookCard = (book: BookType) => {
-
   return (
     <Link to={`/product/${book.isbn}`} key={book.isbn}>
       <article className="bookCard" key={book.isbn} >

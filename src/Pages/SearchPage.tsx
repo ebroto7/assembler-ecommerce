@@ -52,8 +52,7 @@ function SearchPage({ }: Props) {
                         return bookTitle.includes(query.toLocaleLowerCase())
                         
                     })
-                        .map((book: BookType) => 
-                            
+                        .map((book: BookType) =>    
                             <BookCard {...book} key={book.isbn} />
                         )}
                 </ul>

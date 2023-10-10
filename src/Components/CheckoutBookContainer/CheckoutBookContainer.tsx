@@ -4,7 +4,6 @@ import { CartBookType, CartContext } from '../../context/BookContext'
 
 import { BookType } from '../../Types/book'
 import "./checkoutBookContainer.styles.css"
-import { BiCartDownload } from "react-icons/bi"
 import {GoTrash} from 'react-icons/go'
 import { currencyFormat } from '../../utils/utils'
 type Props = {
@@ -13,28 +12,36 @@ type Props = {
 
 export const CheckoutBookContainer: FC<Props> = ({ book }) => {
 
-    const { cartItems, handleAddBook, removeFromCart, restBookUnits } = useContext(CartContext)
+    const { handleAddBook, removeFromCart, restBookUnits } = useContext(CartContext)
 
-    const [bookPrice, setBookPrice] = useState<number>(book.book.price)
+    const [numberItems, setMumberItems] = useState<number>(book.units)
+    const [bookPrice, setBookPrice] = useState<number>(book.book.price*numberItems)
+
     const add = () => {
         if (book.units < book.book.stock) {
             console.log("chechoutBookOcntainer book stock= " + book.book.stock)
             handleAddBook(book.book)
+            setMumberItems(current => current +1)
         }
     }
     const rest = () => {
         if (book.units > 0) {
             restBookUnits(book.book)
+            setMumberItems(current => current -1)
         }
+        
     }
     const reset = () => {
         removeFromCart(book.book)
     }
-
     useEffect(() => {
-        if (book.units === 0) setBookPrice(current => current = book.book.price)
-        setBookPrice(book.book.price * book.units)
-    }, [cartItems])
+        setBookPrice(book.book.price * numberItems)
+
+    },[numberItems])
+
+    // useEffect(() => {
+    //     if (book.units === 0) setBookPrice(current => current = book.book.price)
+    // }, [cartItems])
 
     return (
         <section className='CheckoutBookContainer'>
@@ -46,7 +53,7 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
                     <div className="bookCard_cart">
                         <div>
                             <button onClick={rest}>-</button>
-                            <h4 className="bookCard_cart_quantity">{book.units}</h4>
+                            <h4 className="bookCard_cart_quantity">{numberItems}</h4>
                             <button onClick={add}>+</button>
                         </div>
                         <button

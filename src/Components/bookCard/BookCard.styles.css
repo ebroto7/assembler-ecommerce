@@ -54,7 +54,11 @@
   text-align: center;
   margin: 0;
 }
-
+.bookCard_body h2 {
+  margin: 0 8px;
+  max-height: 3.5rem;
+  overflow: hidden;
+}
 
 .bookCard_cart {
   display: flex;

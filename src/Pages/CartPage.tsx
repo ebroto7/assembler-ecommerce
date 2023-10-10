@@ -16,8 +16,8 @@ export const CartPage = () => {
 
   useEffect(() => {
     console.log("detail page",cartItems.length)
-    console.log("detail page",totalPrice)
-    console.log("detail page",numberBooksOnCart)
+    console.log("detail page price",totalPrice)
+    console.log("detail page n books",numberBooksOnCart)
   }, [cartItems, totalPrice, numberBooksOnCart])
 
  

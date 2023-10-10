@@ -2,7 +2,7 @@ import { FC, useState, useContext, useEffect } from 'react'
 import { BookType } from '../../Types/book'
 import { CartContext } from '../../context/BookContext'
 
-
+import { BiCartDownload } from "react-icons/bi"
 
 
 export const BuyBookButton: FC<BookType> = (book) => {
@@ -41,7 +41,7 @@ console.log("buybook",    localStorage.getItem('books')
     return (
         <>
             {/* <button onClick={AddBook} className="bookCard_buyButton">Add to cart</button> */}
-            {(!isBuy) && <button onClick={AddBook} className="bookCard_buyButton">Add to cart</button>}
+            {(!isBuy) && <button onClick={AddBook} className="bookCard_buyButton">Add <BiCartDownload/></button>}
             {(isBuy) && <button onClick={RemoveBook} className="bookCard_buyButton">Remove from cart</button>}
         </>
 

@@ -104,7 +104,7 @@ function bookReducer(bookList: CartBookType[], action: Action) {
 
          )
          bookList.splice(isOnCart, 1)
-
+         localStorage.setItem("books", JSON.stringify(bookList));
          return bookList
       }
       default:

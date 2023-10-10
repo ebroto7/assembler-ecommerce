@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useId } from 'react'
 import { BookType } from '../../Types/book';
 import BookCard from '../bookCard/BookCard';
 import { shuffle } from '../../utils/utils';
@@ -16,11 +16,11 @@ const BookInlineContainer:FC<Props> = ({title, bookList} ) => {
     books = books.filter((book) => book.bestseller === true );
     console.log("bestSeller"+ books.length)
   } 
-  if (title === 'fiction') {
+  if (title === 'Fiction') {
     books = books.filter((book) => book.genre === "fiction" );
     console.log("bestSeller"+ books.length)
   }
-  if (title === 'Best r') {
+  if (title === 'Best rated') {
     books = books.filter((book) => book.genre === "fiction" );
     console.log("bestSeller"+ books.length)
   }
