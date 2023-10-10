@@ -1,35 +1,21 @@
-import { useSearchParams } from 'react-router-dom'
-import { apiContext } from '../../context/APIContext'
-
-import { FaSearch } from "react-icons/fa"
-
+import { useEffect } from "react"
+import { apiContext } from "../../context/APIContext"
 
 export const SearchBar = () => {
+
   const { apiBooks } = apiContext()
 
-  const [searchParams, setSearchParams] = useSearchParams()
-  const search = searchParams.get("q") ?? ""
+  useEffect(() => {
 
-  const handleSearch = (event) => {
-    setSearchParams({ q: event.target.value })
-  }
+  }, [])
 
   return (
-    <section>
-
+    <>
       <div className='SearchBar_container'>
-        <input type="text"
-          name="SearchBar"
-          placeholder='search'
-          onChange={handleSearch}
-          value={search}
-        />
-        <p><FaSearch /></p>
+        <input type="search" name="SearchBar" id="SearchBar" placeholder='search' />
+        <p>lupa</p>
       </div>
-      <div>
-        <p>hello</p>
-      </div>
-    </section>
+    </>
   )
 }
 
