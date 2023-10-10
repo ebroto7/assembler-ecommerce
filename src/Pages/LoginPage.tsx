@@ -1,13 +1,13 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useContext } from 'react'
 
 import { Link, Navigate } from 'react-router-dom'
 import { IoArrowBackCircleOutline } from "react-icons/io5"
-import { AuthContext } from '../context/authContext'
+import { AuthContext, userLoginType } from '../context/authContext'
 // type Props = {}
 
 export const LoginPage = () => {
 
-  // const {login} = AuthContext()
+  const { login } = useContext(AuthContext)
 
   const userNameInput = useRef<HTMLInputElement>(null)
   const passwordInput = useRef<HTMLInputElement>(null)
@@ -17,15 +17,11 @@ export const LoginPage = () => {
 
   useEffect(() => {
     // if(userNameInput !== null) {
-      userNameInput.current?.focus()
+    userNameInput.current?.focus()
     // } 
   }, [])
 
-  const login = (username: string, password: string) => {
-    /// SAVE USER
-    /// Navigate link
-    console.log(`login page. user: ${username}, pass: ${password}`)
-  }
+ 
   const validateUserName = (username: string) => {
     if (username.length < 4) return "invalid user name. The username must contain a minimum of 4 characters"
   }
@@ -41,8 +37,8 @@ export const LoginPage = () => {
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault()
     login(user, password)
-    console.log("login ",user,password)
-    // {<Navigate to="/home" />}
+    console.log("login ", user, password)
+    {<Navigate to="/home" />}
   }
 
   return (
@@ -77,7 +73,6 @@ export const LoginPage = () => {
           <p className='formErrorMessage'>{passwordErrorMessage}</p>
         </section>
           <button className='formBtn' type="submit">Login</button>
-     
       </form>
     </main>
   )

@@ -1,7 +1,6 @@
 import { FC, 
     PropsWithChildren,
     createContext, 
-    useContext, 
     useCallback, 
     useMemo, 
     useState 
@@ -10,19 +9,13 @@ import { FC,
 
 const userLocalStorageKey = 'userLogin'
 
-export type userLoginStateProps = {
-    isAuthenticated: boolean
-}
-
-export const AuthContext = createContext<userLoginStateProps>({
-    isAuthenticated: false
-})
+export const AuthContext = createContext({})
 
 
 const AuthContextProvider: FC<PropsWithChildren>  = ({ children }) => {
+    console.log(localStorage.getItem(userLocalStorageKey))
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
-        // localStorage.getItem(userLocalStorageKey) ?? false
-        (!localStorage.getItem(userLocalStorageKey)) ?? true
+        (localStorage.getItem(userLocalStorageKey) === null) ? false : true
     )
 
     const login = useCallback(function (user: string, password: string) {
@@ -30,6 +23,7 @@ const AuthContextProvider: FC<PropsWithChildren>  = ({ children }) => {
             user: user,
             password: password
         }
+        console.log("authcontext loginCallbak")
         localStorage.setItem(userLocalStorageKey, JSON.stringify(newUser))
         setIsAuthenticated(true)
     }, [])
@@ -56,12 +50,5 @@ const AuthContextProvider: FC<PropsWithChildren>  = ({ children }) => {
 
 }
 
-function userContext() {
-    const context = useContext(AuthContext);
-    if (context === undefined || context === null) {
-       throw new Error("Function not implemented.");
-    }
-    return context;
- }
 
-export { AuthContextProvider, userContext }
+export { AuthContextProvider }

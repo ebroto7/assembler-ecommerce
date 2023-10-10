@@ -17,7 +17,6 @@ function SearchPage({ }: Props) {
     }
     return (
         <>
-
             <header className="cartPage_Header">
                 <Link to="/home" key="home">
                     <button><IoArrowBackCircleOutline />Home</button>
@@ -50,7 +49,6 @@ function SearchPage({ }: Props) {
                         if (!query ) return true
                         const bookTitle = book.author.toLocaleLowerCase()
                         return bookTitle.includes(query.toLocaleLowerCase())
-                        
                     })
                         .map((book: BookType) =>    
                             <BookCard {...book} key={book.isbn} />
