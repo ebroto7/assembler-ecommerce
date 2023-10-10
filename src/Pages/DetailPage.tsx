@@ -9,7 +9,6 @@ import { IoArrowBackCircleOutline } from "react-icons/io5"
 const DetailPage = () => {
     const { isbn: productISBN } = useParams<{isbn: string}>()
     const {apiBooks} = apiContext()
-// console.log("detail page cart books"+)
     const book = productISBN 
     ? apiBooks.find(({ isbn }) => isbn === productISBN)
     : undefined

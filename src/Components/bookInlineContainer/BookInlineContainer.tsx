@@ -14,15 +14,12 @@ const BookInlineContainer:FC<Props> = ({title, bookList} ) => {
 
   if (title === 'Best seller') {
     books = books.filter((book) => book.bestseller === true );
-    console.log("bestSeller"+ books.length)
   } 
   if (title === 'Fiction') {
     books = books.filter((book) => book.genre === "fiction" );
-    console.log("bestSeller"+ books.length)
   }
   if (title === 'Best rated') {
     books = books.filter((book) => book.genre === "fiction" );
-    console.log("bestSeller"+ books.length)
   }
   
 

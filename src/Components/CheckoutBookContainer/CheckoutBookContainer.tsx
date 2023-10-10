@@ -33,6 +33,8 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
     }
     const reset = () => {
         removeFromCart(book.book)
+        setMumberItems(0)
+
     }
     useEffect(() => {
         setBookPrice(book.book.price * numberItems)

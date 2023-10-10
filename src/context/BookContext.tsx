@@ -100,11 +100,12 @@ function bookReducer(bookList: CartBookType[], action: Action) {
 
       case Actions.RemoveBook: {
          const isOnCart = bookList.findIndex(
-            (cartBook) => cartBook.isbn === action.payload.isbn,
-
+            (cartBook) => cartBook.isbn === action.payload.isbn
          )
          bookList.splice(isOnCart, 1)
          localStorage.setItem("books", JSON.stringify(bookList));
+         console.log("bookcontext remove book ", bookList)
+
          return bookList
       }
       default:
