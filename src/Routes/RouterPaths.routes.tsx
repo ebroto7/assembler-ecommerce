@@ -13,7 +13,7 @@ import { BookProvider } from "../context/BookContext";
 import { APIbooksProvider } from "../context/APIContext"
 import { AuthContextProvider } from "../context/authContext"
 import SearchPage from "../Pages/SearchPage";
-
+import { CART, CHECKOUT, DETAIL, HOME, LOGIN, LOGOUT, PRIVATE, PRODUCT, SEARCH, SIGNUP } from "./paths";
 
 export function Router() {
     return (
@@ -25,19 +25,19 @@ export function Router() {
                         <Routes>
                             <Route path={"/"}>
                                 <Route index element={<LandingPage />} />
-                                <Route path="/home" element={<HomePage />} />
-                                <Route path="/login" element={<LoginPage />} />
-                                <Route path="/signup" element={<SignUpPage />} />
-                                <Route path="/cart" element={<CartPage />} />
-                                <Route path="/search" element={<SearchPage />} />
-                                <Route path="/product">
-                                    <Route path=":isbn" element={<DetailPage />} />
+                                <Route path={HOME} element={<HomePage />} />
+                                <Route path={LOGIN} element={<LoginPage />} />
+                                <Route path={SIGNUP} element={<SignUpPage />} />
+                                <Route path={CART} element={<CartPage />} />
+                                <Route path={SEARCH} element={<SearchPage />} />
+                                <Route path={PRODUCT}>
+                                    <Route path={DETAIL} element={<DetailPage />} />
                                 </Route>
                             </Route>
 
-                            <Route path={"/private"}>
-                                <Route path=":checkout" element={<CheckoutPage />} />
-                                <Route path=":logout" element={<Logout />} />
+                            <Route path={PRIVATE}>
+                                <Route path={CHECKOUT} element={<CheckoutPage />} />
+                                <Route path={LOGOUT} element={<Logout />} />
                             </Route>
                         </Routes>
                     </BrowserRouter>

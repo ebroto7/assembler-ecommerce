@@ -4,12 +4,13 @@ import { Link } from "react-router-dom"
 import { currencyFormat } from "../../utils/utils"
 import "./BookCard.styles.css"
 import { useId } from "react"
+import { PRODUCT } from "../../Routes/paths"
 
 
 
 const BookCard = (book: BookType) => {
   return (
-    <Link to={`/product/${book.isbn}`} key={book.isbn}>
+    <Link to={`${PRODUCT}/${book.isbn}`} key={book.isbn}>
       <article className="bookCard" key={book.isbn} >
         <div className="bookCard_info">
           <img src={book.img} alt={`${book.title} image`} />

@@ -8,6 +8,7 @@ import Navbar from '../Components/Navbar'
 import BookInlineContainer from '../Components/bookInlineContainer/BookInlineContainer'
 
 import { IoBagCheckOutline } from "react-icons/io5"
+import { CART } from '../Routes/paths'
 
 const bookFilters = ['Best seller','Fiction', 'Best rated']
 
@@ -36,7 +37,7 @@ export const HomePage = () => {
     <>
       <Navbar />
       <main className='main'>
-        <Link to="/cart" key="cart">
+        <Link to={CART} key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
             {cartNumber === 0 ? <p>{0}</p> : <p>{cartNumber}</p> }

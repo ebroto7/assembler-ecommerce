@@ -5,6 +5,7 @@ import { apiContext } from "../context/APIContext";
 import BuyBookButton from "../Components/buyBookButton/BuyBookButton";
 
 import { IoArrowBackCircleOutline } from "react-icons/io5"
+import { HOME } from "../Routes/paths";
 
 const DetailPage = () => {
     const { isbn: productISBN } = useParams<{isbn: string}>()
@@ -22,7 +23,7 @@ const DetailPage = () => {
             {/* <Navbar /> */}
 
             <header className="cartPage_Header">
-                <Link to="/home" key="home">
+                <Link to={HOME} key="home">
                     <button><IoArrowBackCircleOutline />Home</button>
                 </Link>
                 <BuyBookButton {...book} />

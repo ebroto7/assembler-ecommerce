@@ -1,5 +1,6 @@
 import logo_star_transparent from '../Assets/Images/Logo/logo-star-transparent.png'
 import { Link, NavLink } from "react-router-dom";
+import { HOME, LOGIN, SIGNUP } from '../Routes/paths';
 
 //  type Props = {}
 
@@ -11,13 +12,13 @@ const LandingPage = () => {
             <img src={logo_star_transparent} alt="Star Book logo"  />
             <h1>STAR BOOK</h1>
         </div>
-        <NavLink to="/home"key ="home">
+        <NavLink to={HOME} key ="home">
 						<button className='startButton'>Let's start</button>
 				</NavLink>        
-        <Link to="/login"key ="login">
+        <Link to={LOGIN} key ="login">
 						<button>Login</button>
 				</Link>   
-        <Link to="/signup"key ="signup">
+        <Link to={SIGNUP} key ="signup">
 						<button disabled>Sign Up</button>
 				</Link> 
     </main>

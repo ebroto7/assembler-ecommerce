@@ -4,6 +4,7 @@ import { apiContext } from "../context/APIContext";
 import { IoArrowBackCircleOutline } from "react-icons/io5"
 import BookCard from '../Components/bookCard/BookCard';
 import { BookType } from '../Types/book';
+import { HOME } from '../Routes/paths';
 
 type Props = {}
 
@@ -18,7 +19,7 @@ function SearchPage({ }: Props) {
     return (
         <>
             <header className="cartPage_Header">
-                <Link to="/home" key="home">
+                <Link to={HOME} key="home">
                     <button><IoArrowBackCircleOutline />Home</button>
                 </Link>
             </header>

@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState, useContext } from 'react'
 
-import { Link, Navigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleOutline } from "react-icons/io5"
-import { AuthContext, userLoginType } from '../context/authContext'
+import { useAuthContext, userLogedType } from '../context/authContext'
 // type Props = {}
 
 export const LoginPage = () => {
 
-  const { login } = useContext(AuthContext)
+  const {login} = useAuthContext()
+  const navigate = useNavigate()
 
   const userNameInput = useRef<HTMLInputElement>(null)
   const passwordInput = useRef<HTMLInputElement>(null)
@@ -36,9 +37,10 @@ export const LoginPage = () => {
 
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault()
-    login(user, password)
-    console.log("login ", user, password)
-    {<Navigate to="/home" />}
+    const newUser: userLogedType = { user: user, password :password}
+    
+    console.log("login ", newUser)
+    navigate("/")
   }
 
   return (
@@ -72,7 +74,9 @@ export const LoginPage = () => {
           />
           <p className='formErrorMessage'>{passwordErrorMessage}</p>
         </section>
-          <button className='formBtn' type="submit">Login</button>
+          <button className='formBtn' type="submit">Login
+
+          </button>
       </form>
     </main>
   )
