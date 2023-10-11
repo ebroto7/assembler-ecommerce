@@ -61,8 +61,7 @@ interface restUnits {
 type Action = AddBook | RemoveBook | sumUnits | restUnits
 
 
-function bookReducer(bookList: CartBookType[], action: Action) {
-
+const  bookReducer = (bookList: CartBookType[], action: Action) => {
    switch (action.type) {
       case Actions.AddBook: {
          const isOnCart = bookList.find(

@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState, useContext } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleOutline } from "react-icons/io5"
-import { useAuthContext, userLogedType } from '../context/authContext'
-// type Props = {}
+import { AuthContext, userLogedType } from '../context/authContext/authContext'
 
 export const LoginPage = () => {
 
-  const {login} = useAuthContext()
+  const {loginContext} = useContext(AuthContext)
   const navigate = useNavigate()
+
 
   const userNameInput = useRef<HTMLInputElement>(null)
   const passwordInput = useRef<HTMLInputElement>(null)
@@ -38,8 +38,8 @@ export const LoginPage = () => {
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault()
     const newUser: userLogedType = { user: user, password :password}
-    
-    console.log("login ", newUser)
+
+    loginContext(newUser)
     navigate("/")
   }
 
@@ -52,6 +52,7 @@ export const LoginPage = () => {
       </header>
       <h1>Login</h1>
       <form className="form" onSubmit={handleSubmit}>
+
         <section>
           <h3>User name</h3>
           <input type="text"
@@ -64,6 +65,7 @@ export const LoginPage = () => {
           <p className='formErrorMessage'>{userErrorMessage}</p>
           <h3>Password</h3>
         </section>
+
         <section>
           <input type="text"
             name="password"
@@ -74,9 +76,8 @@ export const LoginPage = () => {
           />
           <p className='formErrorMessage'>{passwordErrorMessage}</p>
         </section>
-          <button className='formBtn' type="submit">Login
-
-          </button>
+        
+        <button className='formBtn' type="submit">Login</button>
       </form>
     </main>
   )

@@ -11,15 +11,15 @@ import CheckoutPage from "../Pages/CheckoutPage";
 
 import { BookProvider } from "../context/BookContext";
 import { APIbooksProvider } from "../context/APIContext"
-import { AuthContextProvider } from "../context/authContext"
+import AuthProvider from "../context/authContext/authContext";
 import SearchPage from "../Pages/SearchPage";
 import { CART, CHECKOUT, DETAIL, HOME, LOGIN, LOGOUT, PRIVATE, PRODUCT, SEARCH, SIGNUP } from "./paths";
 
 export function Router() {
     return (
-        <APIbooksProvider>
-            <BookProvider>
-                <AuthContextProvider>
+        <AuthProvider >
+            <APIbooksProvider>
+                <BookProvider>
 
                     <BrowserRouter>
                         <Routes>
@@ -42,8 +42,9 @@ export function Router() {
                         </Routes>
                     </BrowserRouter>
 
-                </AuthContextProvider>
-            </BookProvider>
-        </APIbooksProvider>
+                </BookProvider>
+            </APIbooksProvider>
+        </AuthProvider>
+
     );
 }
