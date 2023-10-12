@@ -3,20 +3,23 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/BookContext'
 import { currencyFormat } from '../utils/utils'
 import { HOME } from '../Routes/paths'
+import { AuthContext } from '../context/authContext/authContext'
 
 
 const CheckoutPage = () => {
     const navigate = useNavigate()
 
     const { cartItems } = useContext(CartContext)
+    const { logout} = useContext(AuthContext)
 
     const id = useId()
     console.log(localStorage.getItem('userLogin'))
 
     const handleBuy = () => {
-        localStorage.removeItem("books")
+        localStorage.removeItem('books')
+        logout()
         alert("The purchase has been made successfully, in the next 72 hours you will receive your order")
-        navigate("/")
+        // navigate("/")
     }
 
     const totalPrice = cartItems.map((book) =>  book.book.price * book.units)

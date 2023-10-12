@@ -14,6 +14,7 @@ import { APIbooksProvider } from "../context/APIContext"
 import AuthProvider from "../context/authContext/authContext";
 import SearchPage from "../Pages/SearchPage";
 import { CART, CHECKOUT, DETAIL, HOME, LOGIN, LOGOUT, PRIVATE, PRODUCT, SEARCH, SIGNUP } from "./paths";
+import PrivateRoutes from "./PrivateRoutes";
 
 export function Router() {
     return (
@@ -35,10 +36,15 @@ export function Router() {
                                 </Route>
                             </Route>
 
-                            <Route path={PRIVATE}>
+                            {/* <Route path={PRIVATE}>
                                 <Route path={CHECKOUT} element={<CheckoutPage />} />
                                 <Route path={LOGOUT} element={<Logout />} />
-                            </Route>
+                            </Route> */}
+                            <Route path={PRIVATE} element={
+                                <PrivateRoutes>
+                                    <CheckoutPage />
+                                </PrivateRoutes>
+                            } />
                             
                         </Routes>
                     </BrowserRouter>

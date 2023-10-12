@@ -67,7 +67,6 @@ const authReducer = (user: LogedType, action: AuthAction) => {
                 isLogged: false
             }
             localStorage.removeItem('user')
-            console.log("authreducer logout",user)
 
             return deletedUser
         }
@@ -80,6 +79,7 @@ const authReducer = (user: LogedType, action: AuthAction) => {
 const init = () => {
     const userString = localStorage.getItem('user');
     const user: UserType = userString ? JSON.parse(userString) : null;
+    console.log("usereducer func init",user)
     const loggedUser: LogedType = {
         user: user,
         isLogged: true
@@ -111,6 +111,7 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         console.log("AuthContext logout")
 
         localStorage.removeItem('user')
+        localStorage.removeItem('books')
         dispatch({
             type: AuthActionTypes.logout,
             payload: {
