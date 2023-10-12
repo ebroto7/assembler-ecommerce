@@ -1,6 +1,5 @@
 import { useContext, useId } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../context/authContext'
 import { CartContext } from '../context/BookContext'
 import { currencyFormat } from '../utils/utils'
 import { HOME } from '../Routes/paths'
@@ -10,11 +9,9 @@ const CheckoutPage = () => {
     const navigate = useNavigate()
 
     const { cartItems } = useContext(CartContext)
-    const isAuthenticated  = useContext(AuthContext)
 
     const id = useId()
     console.log(localStorage.getItem('userLogin'))
-    console.log("CheckoutPage",isAuthenticated)
 
     const handleBuy = () => {
         localStorage.removeItem("books")

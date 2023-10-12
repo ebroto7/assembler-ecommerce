@@ -1,19 +1,28 @@
-import { FC } from 'react';
-import { useState, useContext } from 'react';
+import { FC, useState } from 'react';
+import { useContext } from 'react';
 import logo_star_transparent from '../Assets/Images/Logo/logo-star-transparent.png'
-import SearchBar from './searchBar/SearchBar';
 import { NavLink } from 'react-router-dom'
 import { FaSearch } from "react-icons/fa"
 import { IoMdMenu } from "react-icons/io"
 import { SEARCH } from '../Routes/paths';
-import { useAuthContext } from '../context/authContext';
+import { AuthContext, LogedType } from '../context/authContext/authContext'
 
 
 const Navbar: FC = () => {
-    const isAuthenticated = useAuthContext()
-    const [isLoged, setIsLoged] = useState<Boolean>(isAuthenticated)
+    const {authState, logout} = useContext(AuthContext)
+    const {isLogged, user} = authState
+    console.log("navbar",authState)
+    console.log("navbar name",authState.user.userName)
+    console.log("navbar logged",user.userName)
 
-    console.log("navbar",isAuthenticated)
+    const [viewLogin, setViewLogin]= useState<Boolean>(isLogged)
+
+    const handleLogout = () => {
+        logout()
+        setViewLogin(false)
+    }
+
+
     return (
         <header className='main_header'>
             <div className='main_header_container'>
@@ -29,7 +38,8 @@ const Navbar: FC = () => {
                 </div>
 
             </div>
-            {isLoged && <div className='navBar_userAuthenticatedBar'>Hello</div>}
+            {viewLogin && <div className='navBar_userAuthenticatedBar'>{`welcome ${user.userName}!`}</div>}
+            {viewLogin && <button onClick={handleLogout}>logout</button>}
 
         </header>
     )

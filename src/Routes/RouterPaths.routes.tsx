@@ -39,6 +39,7 @@ export function Router() {
                                 <Route path={CHECKOUT} element={<CheckoutPage />} />
                                 <Route path={LOGOUT} element={<Logout />} />
                             </Route>
+                            
                         </Routes>
                     </BrowserRouter>
 

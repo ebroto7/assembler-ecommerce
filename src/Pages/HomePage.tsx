@@ -24,13 +24,14 @@ export const HomePage = () => {
   const {apiBooks} = apiContext()
 
   const {cartItems, numberBooksOnCart}  = bookContext()
-  const [cartNumber, setCartNumber] = useState<number>(cartItems.length)
+  const [cartNumber, setCartNumber] = useState<number>()
   console.log("HomePage numberBooksOnCart:"+numberBooksOnCart)
 
 
   console.log(cartItems.length)
   useEffect(() => {
     localStorage.getItem('books')
+    setCartNumber(cartItems.length)
   }, [cartNumber, cartItems])
 
   return (

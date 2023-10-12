@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useContext } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { IoArrowBackCircleOutline } from "react-icons/io5"
-import { AuthContext, userLogedType } from '../context/authContext/authContext'
+import { AuthContext, LogedType } from '../context/authContext/authContext'
 
 export const LoginPage = () => {
 
@@ -37,10 +37,17 @@ export const LoginPage = () => {
 
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault()
-    const newUser: userLogedType = { user: user, password :password}
+   
+    const userLoged: LogedType = {
+      user: { userName: user, password: password },
+      isLogged: true
+  }
 
-    loginContext(newUser)
-    navigate("/")
+    loginContext(userLoged)
+    navigate("/home")
+    // navigate((-1), {
+    //   replace: true
+    // })
   }
 
   return (

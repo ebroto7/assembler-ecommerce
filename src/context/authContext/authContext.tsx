@@ -5,12 +5,19 @@ import {
     useReducer
 } from "react";
 
-export type userLogedType = {
-    user: string,
+export type UserType = {
+    userName: string,
     password: string
 }
+export type LogedType = {
+    user: UserType,
+    isLogged: boolean
+}
 
-const initialArgs: boolean = false
+const initialArgs: LogedType = {
+    user: { userName: "", password: "" },
+    isLogged: false
+}
 
 
 enum AuthActionTypes {
@@ -20,80 +27,101 @@ enum AuthActionTypes {
 interface Login {
     type: AuthActionTypes.login,
     payload: {
-        user: string,
-        password: string
+        user: UserType,
+        isLogged: boolean
     }
 }
 interface Logout {
     type: AuthActionTypes.logout,
     payload: {
-        user: string,
-        password: string
+        user: UserType,
+        isLogged: boolean
     }
 }
 type AuthAction = Login | Logout
 
 export type AuthStateProps = {
-    authState: boolean,
-    loginContext: () => void,
+    authState: LogedType,
+    loginContext: (user: LogedType) => void,
     logout: () => void,
 }
 export const AuthContext = createContext<AuthStateProps>({
-    authState: false,
-    loginContext: () => {},
-    logout: () => {},
+    authState: initialArgs,
+    loginContext: () => { },
+    logout: () => { },
 });
 
-const authReducer = (state: userLogedType, action: AuthAction) => {
+const authReducer = (user: LogedType, action: AuthAction) => {
 
     switch (action.type) {
-        case AuthActionTypes.login:
-            return {
-                ...state,
-                isLogged: true,
-                user: action.payload
+        case AuthActionTypes.login: {
+          
+            return user
+        }
+        case AuthActionTypes.logout: {
+              const deletedUser: LogedType = {
+                user: {
+                    userName: "",
+                    password: ""
+                },
+                isLogged: false
             }
-        case AuthActionTypes.logout:
-            return {
-                isLogged: false,
-            }
-        default: state;
+            localStorage.removeItem('user')
+            console.log("authreducer logout",user)
+
+            return deletedUser
+        }
+        default: 
+            return user
+        
     }
 }
 
 const init = () => {
-    const user: userLogedType = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
-        return initialArgs
+    const userString = localStorage.getItem('user');
+    const user: UserType = userString ? JSON.parse(userString) : null;
+    const loggedUser: LogedType = {
+        user: user,
+        isLogged: true
     }
-    return true
-}
+    if (user) return loggedUser;
+
+    return initialArgs
+};
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const [authState, dispatch] = useReducer(authReducer, {}, init)
 
-    console.log(authState)
+    console.log("authstate", authState)
 
-    const loginContext = (newUser: userLogedType) => {
-        console.log("AuthContext",newUser)
+    const loginContext = (newUser: LogedType) => {
         localStorage.setItem('user', JSON.stringify(newUser))
+
         dispatch({
             type: AuthActionTypes.login,
-            payload: newUser
+            payload: {
+                user: newUser.user,
+                isLogged: newUser.isLogged,
+            }
         })
     }
 
     const logout = () => {
+        console.log("AuthContext logout")
+
         localStorage.removeItem('user')
         dispatch({
-            type: AuthActionTypes.logout
+            type: AuthActionTypes.logout,
+            payload: {
+                user: { userName: "", password: "" },
+                isLogged: false
+            }
         })
-
     }
 
     return <AuthContext.Provider
-        value={{ ...authState, loginContext: loginContext, logout: logout }}
+        value={{ authState, loginContext: loginContext, logout: logout }}
     >
         {children}
     </AuthContext.Provider>
