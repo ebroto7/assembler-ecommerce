@@ -6,17 +6,14 @@ import BuyBookButton from "../Components/buyBookButton/BuyBookButton";
 
 import { IoArrowBackCircleOutline } from "react-icons/io5"
 import { HOME } from "../Routes/paths";
+import ErrorView, { error } from '../Components/errorView/ErrorView';
 
 const DetailPage = () => {
-    const { isbn: productISBN } = useParams<{isbn: string}>()
-    const {apiBooks} = apiContext()
-    const book = productISBN 
-    ? apiBooks.find(({ isbn }) => isbn === productISBN)
-    : undefined
+    const { isbn: productISBN } = useParams<{ isbn: string }>()
+    const { apiBooks } = apiContext()
+    const book = productISBN && apiBooks.find(({ isbn }) => isbn === productISBN)
 
-    if (!book) return null
-
-    const { title, author, description, img } = book
+    
 
     return (
         <>
@@ -24,21 +21,27 @@ const DetailPage = () => {
 
             <header className="cartPage_Header">
                 <Link to={HOME} key="home">
-                    <button><IoArrowBackCircleOutline />Home</button>
+                    <button><IoArrowBackCircleOutline /> Home</button>
                 </Link>
-                <BuyBookButton {...book} />
+                {book && <BuyBookButton {...book} />}
             </header>
-            <article className="detailPage_imgContainer ">
-                <div className="detailPage_roundImgContainer ">
-                    <img className="detailPage_bookImg" src={img} alt={`${title} image`} />
-                </div>
-            </article>
-            <article className="detailPage_mainContainer ">
-                <h1>{title}</h1>
-                <h2>{author}</h2>
-                <p>{description}</p>
-                <h1>your book with ISBN: {productISBN}</h1>
-            </article>
+            {book ?
+                <section>
+                    <article className="detailPage_imgContainer ">
+                        <div className="detailPage_roundImgContainer ">
+                            <img className="detailPage_bookImg" src={book.img} alt={`${book.title} image`} />
+                        </div>
+                    </article>
+                    <article className="detailPage_mainContainer ">
+                        <h1>{book.title}</h1>
+                        <h2>{book.author}</h2>
+                        <p>{book.description}</p>
+                        <h1>your book with ISBN: {productISBN}</h1>
+                    </article>
+                </section>
+                :
+                <ErrorView error={error.unknownBook} />
+            }
         </>
     )
 }

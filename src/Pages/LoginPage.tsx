@@ -80,7 +80,7 @@ export const LoginPage = () => {
           <p className='formErrorMessage'>{userErrorMessage}</p>
           <h3>Password</h3>
         </section>
-
+    
         <section>
           <input type="text"
             name="password"

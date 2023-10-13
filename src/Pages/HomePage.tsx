@@ -10,9 +10,7 @@ import BookInlineContainer from '../Components/bookInlineContainer/BookInlineCon
 
 import { IoBagCheckOutline } from "react-icons/io5"
 import { CART } from '../Routes/paths'
-import ErrorView from '../Components/errorView/ErrorView';
-
-import { error } from '../Components/errorView/ErrorView';
+import ErrorView, { error }  from '../Components/errorView/ErrorView';
 
 const bookFilters = ['Best seller', 'Fiction', 'Best rated']
 
