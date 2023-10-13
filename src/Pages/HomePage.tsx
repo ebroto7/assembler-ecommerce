@@ -10,6 +10,9 @@ import BookInlineContainer from '../Components/bookInlineContainer/BookInlineCon
 
 import { IoBagCheckOutline } from "react-icons/io5"
 import { CART } from '../Routes/paths'
+import ErrorView from '../Components/errorView/ErrorView';
+
+import { error } from '../Components/errorView/ErrorView';
 
 const bookFilters = ['Best seller', 'Fiction', 'Best rated']
 
@@ -22,41 +25,43 @@ enum BookFilters {
 
 export const HomePage = () => {
 
-  const { apiBooks } = apiContext()
+  const { apiBooks, apiError } = apiContext()
+
 
   const { cartItems, numberBooksOnCart } = bookContext()
   const [cartNumber, setCartNumber] = useState<number>()
   console.log("HomePage numberBooksOnCart:" + numberBooksOnCart)
 
 
-  // useEffect(() => {
-  //   localStorage.getItem('books')
+  useEffect(() => {
+    localStorage.getItem('books')
 
-  //   setCartNumber(cartItems.length)
-  // }, [cartNumber, cartItems])
+    setCartNumber(cartItems.length)
+  }, [cartNumber, cartItems])
 
   const notify = () => toast.success('Here is your toast.', { duration: 2000 });
 
   useEffect(() => {
     notify
     console.log("hello world")
-
   }, [])
 
   return (
     <>
       <Navbar />
       <main className='main'>
-        <Link to={CART} key="cart">
+      {!apiError && <Link to={CART} key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {numberBooksOnCart === 0 ? <p>{0}</p> : <p>{numberBooksOnCart}</p>}
+            {cartNumber === 0 ? <p>{0}</p> : <p>{cartNumber}</p>}
           </button>
-        </Link>
-
-        {bookFilters.map((filter) => (
-          <BookInlineContainer key={filter} title={filter} bookList={apiBooks} />
-        ))}
+        </Link> }
+        {apiError
+          ? <ErrorView error={error.apiFail}/>
+          : bookFilters.map((filter) => (
+               <BookInlineContainer key={filter} title={filter} bookList={apiBooks} />
+            ))
+        }
 
         <Toaster position="bottom-center" reverseOrder={true} />
 

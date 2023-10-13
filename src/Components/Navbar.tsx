@@ -44,10 +44,10 @@ const Navbar: FC = () => {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                        
-                                <NavLink to={SEARCH} key="search"> <FaSearch /> </NavLink>
 
-                            
+                            <NavLink to={SEARCH} key="search"> <FaSearch /> </NavLink>
+
+
                             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
                             <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                         </Dropdown.Menu>
@@ -56,8 +56,10 @@ const Navbar: FC = () => {
                 </div>
             </div>
 
-            {viewLogin && <div className='navBar_userAuthenticatedBar'>{`welcome ${user.userName}!`}</div>}
-            {viewLogin && <button onClick={handleLogout}>logout</button>}
+            {viewLogin && <div className='navBar_userAuthenticatedBar'>
+                {`welcome ${user.userName}!`}
+                <button onClick={handleLogout}>logout</button>
+            </div>}
 
         </header>
     )

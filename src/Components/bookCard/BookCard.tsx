@@ -3,7 +3,6 @@ import BuyBookButton from "../buyBookButton/BuyBookButton"
 import { Link } from "react-router-dom"
 import { currencyFormat } from "../../utils/utils"
 import "./BookCard.styles.css"
-import { useId } from "react"
 import { PRODUCT } from "../../Routes/paths"
 
 

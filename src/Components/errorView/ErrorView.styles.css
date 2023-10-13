@@ -1,0 +1,15 @@
+.errorView_mainContainer {
+    height: 80vh;
+    width: 100%;
+    background: var(--secondary-gradient);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size:5rem;
+
+}
+
+.errorView_mainContainer h1 {
+font-size:2rem;
+}

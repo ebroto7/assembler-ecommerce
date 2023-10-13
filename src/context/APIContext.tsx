@@ -15,25 +15,33 @@ import axios from 'axios';
 
 export type ApiBookStateProps = {
    apiBooks: BookType[];
+   apiError: boolean
 }
 
 export const APIcontext = createContext<ApiBookStateProps>({
-   apiBooks: []
+   apiBooks: [],
+   apiError: true
 })
 
 const APIbooksProvider: FC<PropsWithChildren> = ({ children }) => {
    const url = import.meta.env.VITE_API_BASE_URL
    const [apiBooks, setApiBooks] = useState<BookType[]>([])
+   const [apiError, setApiError] = useState<boolean>(true)
+   
 
    useEffect(() => {
          const getProducts = async () => {
             try {
-              const response = await axios.get(url);
+               const response = await axios.get(url);
+            //   const response = await axios.get("https://www.developerway.com/posts/how-to-handle-errors-in-react");
               setApiBooks(response.data);
               console.log(' fetching data:', response.data);
+              console.log(' fetching data:', response.status);
+              setApiError(false)
 
             } catch (error) {
               console.log('Error fetching data:', error);
+              setApiError(true)
             }
          }
          getProducts()
@@ -41,7 +49,7 @@ const APIbooksProvider: FC<PropsWithChildren> = ({ children }) => {
 
    return (
       <APIcontext.Provider
-         value={{ apiBooks }}
+         value={{ apiBooks, apiError }}
       >
          {children}
       </APIcontext.Provider>)
