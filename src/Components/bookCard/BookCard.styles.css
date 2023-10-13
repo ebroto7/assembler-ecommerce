@@ -14,7 +14,18 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 10px 0px black;
 }
-
+.bookCard_ImageLike_Container {
+  padding: 0 8px ;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  justify-content: center;
+}
+.boobookCard_ImageLike_Container p {
+  margin: 8px;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+}
 .bookCard_info {
   display: flex;
   flex-direction: column;

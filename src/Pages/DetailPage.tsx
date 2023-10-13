@@ -8,6 +8,7 @@ import Navbar from "../Components/Navbar";
 import { currencyFormat } from "../utils/utils";
 
 import { BsStarHalf } from "react-icons/bs"
+import LikeButton from "../Components/likeButton/LikeButton";
 
 
 
@@ -39,6 +40,9 @@ const DetailPage = () => {
                         <h4>{book.rating} <BsStarHalf /></h4>
 
                     </article>
+                    <div className="detailPage_likeButton_container">
+                        <LikeButton {...book}/>
+                    </div>
 
                     <article className="detailPage_infoContainer ">
                         {book && <BuyBookButton {...book} />}

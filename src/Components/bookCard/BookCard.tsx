@@ -4,7 +4,8 @@ import { Link } from "react-router-dom"
 import { currencyFormat } from "../../utils/utils"
 import "./BookCard.styles.css"
 import { PRODUCT } from "../../Routes/paths"
-
+import LikeButton from "../likeButton/LikeButton"
+import {BsStarHalf} from 'react-icons/bs'
 
 
 const BookCard = (book: BookType) => {
@@ -12,7 +13,12 @@ const BookCard = (book: BookType) => {
     <Link to={`${PRODUCT}/${book.isbn}`} key={book.isbn}>
       <article className="bookCard" key={book.isbn} >
         <div className="bookCard_info">
-          <img src={book.img} alt={`${book.title} image`} />
+          <div className="bookCard_ImageLike_Container">
+            <p>{book.rating} <BsStarHalf /></p>
+            <img src={book.img} alt={`${book.title} image`} />
+            <LikeButton {...book}/>
+          </div>
+          
           <div className="bookCard_body">
             <h2>{book.title}</h2>
             <h4>{book.author}</h4>

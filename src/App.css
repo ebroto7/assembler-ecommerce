@@ -372,6 +372,14 @@
   object-fit: contain;
 }
 
+.detailPage_likeButton_container {
+  position: fixed;
+  font-size: 1rem;
+  margin: 0px;
+  padding: 0px;
+  top: 12vh;
+  right: 5vw;
+}
 
 
 
