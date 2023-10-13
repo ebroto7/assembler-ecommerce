@@ -56,7 +56,7 @@ const authReducer = (user: LogedType, action: AuthAction) => {
     switch (action.type) {
         case AuthActionTypes.login: {
           
-            return user
+            return action.payload
         }
         case AuthActionTypes.logout: {
               const deletedUser: LogedType = {

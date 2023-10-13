@@ -1,14 +1,20 @@
 import { FC, useState } from 'react';
 import { useContext } from 'react';
 import logo_star_transparent from '../Assets/Images/Logo/logo-star-transparent.png'
-import { NavLink } from 'react-router-dom'
-import { FaSearch } from "react-icons/fa"
-import { IoMdMenu } from "react-icons/io"
-import { SEARCH } from '../Routes/paths';
-import { AuthContext, LogedType } from '../context/authContext/authContext'
+import { NavLink, Link } from 'react-router-dom'
+
+import { ABOUTUS, HOME, LOGIN, SEARCH } from '../Routes/paths';
+import { AuthContext } from '../context/authContext/authContext'
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
+import { FaSearch } from "react-icons/fa"
+import { IoMdMenu } from "react-icons/io"
+import { IoLibraryOutline } from "react-icons/io5"
+import { BsInfoCircle } from "react-icons/bs"
+import { BsCartCheck } from "react-icons/bs"
+import { BiLogIn } from "react-icons/bi"
+import { BiLogOut } from "react-icons/bi"
 
 
 const Navbar: FC = () => {
@@ -34,31 +40,34 @@ const Navbar: FC = () => {
                     <h1>STAR BOOK</h1>
                 </div>
                 <div>
-                    <NavLink to={SEARCH} key="search">
+                    {/* <NavLink to={SEARCH} key="search">
                         <button><FaSearch /></button>
-                    </NavLink>
+                    </NavLink> */}
                     {/* <button><IoMdMenu /></button> */}
                     <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <Dropdown.Toggle className='navBar_dropdownMenu_button' variant="success" id="dropdown-menu-align-end">
                             <IoMdMenu /> menu
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
+                        <Dropdown.Menu >
+                            {!viewLogin && <Dropdown.Item href={LOGIN}> <p className='navBar_dropDownMenu_link'> <BiLogIn />Login </p> </Dropdown.Item>}
+                            {viewLogin && <Dropdown.Item onClick={handleLogout}> <p className='navBar_dropDownMenu_link'> <BiLogOut />Logout </p> </Dropdown.Item>}
+                            <Dropdown.Divider />
 
-                            <NavLink to={SEARCH} key="search"> <FaSearch /> </NavLink>
+                            <Dropdown.Item href={HOME}><p className='navBar_dropDownMenu_link'> <IoLibraryOutline />Home </p></Dropdown.Item>
+                            <Dropdown.Item href={SEARCH}><p> <FaSearch /> Search</p></Dropdown.Item>
+                            <Dropdown.Item href={SEARCH}><p> <BsCartCheck /> Cart</p></Dropdown.Item>
+                            <Dropdown.Divider />
 
-
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                            <Dropdown.Item href={ABOUTUS}><p> <BsInfoCircle /> About Us</p></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
 
                 </div>
             </div>
 
-            {viewLogin && <div className='navBar_userAuthenticatedBar'>
-                {`welcome ${user.userName}!`}
-                <button onClick={handleLogout}>logout</button>
+            {viewLogin && <div className='navBar_userAuthenticatedBar'><p>Welcome</p>
+                <h3>{user.userName}</h3><p>!</p>
             </div>}
 
         </header>

@@ -55,15 +55,15 @@ export const LoginPage = () => {
 
   const notify = () => toast('You have successfully logged in.');
 
-
+const goBack = () => {
+  // navigate(-1)
+  navigate("/home")
+}
 
   return (
     <main className='signUpPage_container'>
       <header className="pages_Header">
-        <Link to="/" key="">
-          <button><IoArrowBackCircleOutline />Back</button>
-        </Link>
-
+          <button onClick={goBack} ><IoArrowBackCircleOutline />Back</button>
       </header>
       <h1>Login</h1>
       <form className="form" onSubmit={handleSubmit}>

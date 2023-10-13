@@ -13,8 +13,10 @@ import { BookProvider } from "../context/BookContext";
 import { APIbooksProvider } from "../context/APIContext"
 import AuthProvider from "../context/authContext/authContext";
 import SearchPage from "../Pages/SearchPage";
-import { CART, CHECKOUT, DETAIL, HOME, LOGIN, LOGOUT, PRIVATE, PRODUCT, SEARCH, SIGNUP } from "./paths";
+import { ABOUTUS, CART, CHECKOUT, DETAIL, HOME, LOGIN, LOGOUT, PRIVATE, PRODUCT, SEARCH, SIGNUP } from "./paths";
 import PrivateRoutes from "./PrivateRoutes";
+import Navbar from "../Components/Navbar";
+import AboutUsPage from "../Pages/AboutUsPage";
 
 export function Router() {
     return (
@@ -31,6 +33,7 @@ export function Router() {
                                 <Route path={SIGNUP} element={<SignUpPage />} />
                                 <Route path={CART} element={<CartPage />} />
                                 <Route path={SEARCH} element={<SearchPage />} />
+                                <Route path={ABOUTUS} element={<AboutUsPage />} />
                                 <Route path={PRODUCT}>
                                     <Route path={DETAIL} element={<DetailPage />} />
                                 </Route>

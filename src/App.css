@@ -2,57 +2,95 @@
 
 
 :root {
-  
+
   --primary: #26434f;
   --primaryLight: #376071;
   --primaryDark: #15262d;
   --secondary: #59a25c;
   --secondaryLight: #6fca3a;
-  --primary-gradient:  linear-gradient(to right, var(--primary), var(--primaryLight));
-  --secondary-gradient:  linear-gradient(to right, var(--secondary), var(--secondaryLight));
-  --primary-gradient-Alpha50: linear-gradient(to right, #26434f50 , #37607150);
+  --primary-gradient: linear-gradient(to right, var(--primary), var(--primaryLight));
+  --secondary-gradient: linear-gradient(to right, var(--secondary), var(--secondaryLight));
+  --primary-gradient-Alpha50: linear-gradient(to right, #26434f50, #37607150);
 
   background: var(--primary-gradient-Alpha50);
   display: flex;
   justify-content: center;
-  align-items: center; 
-}  
+  align-items: center;
+}
 
-
+/* NAVBAR */
 .main_header {
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 0.5rem;  
-  height: 9vh;
+  padding-top: 0.5rem;
+  height: 10vh;
   width: 100%;
   background: var(--primary-gradient)
-  
 }
+
 .main_header_container {
- height: 100%;
- margin: 0 1rem;
- display: flex;
- flex-direction: row;
- align-items: center;
- justify-content: space-between; 
+  height: 100%;
+  margin: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .main_header div {
- display: flex;
- flex-direction: row;
- align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
 .main_header h1 {
   color: white;
- margin: 0;
- margin-left: 1rem;
- padding: 0;
- font-size: 2rem;
- font-family: 'Titillium Web', sans-serif;
+  margin: 0;
+  margin-left: 1rem;
+  padding: 0;
+  font-size: 2rem;
+  font-family: 'Titillium Web', sans-serif;
 }
+
 .header-logo {
   height: 8vh;
   width: 8vh;
+}
+
+.navBar_userAuthenticatedBar {
+  display: flex;
+  flex: row;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-gradient);
+  color: white;
+}
+
+.navBar_userAuthenticatedBar p {
+  line-height: 100%;
+  
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.navBar_userAuthenticatedBar h3 {
+  line-height: 100%;
+  font-size: 24px;
+  margin: 0;
+  margin-left: 0.2rem;
+  padding: 0;
+  color: var(--secondaryLight);
+}
+
+.navBar_dropdownMenu_button {
+  background: var(--secondary-gradient);
+}
+
+.navBar_dropdownMenu_linkContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 /* LANDING PAGE */
@@ -66,6 +104,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .landigPage_container img {
   display: flex;
   align-items: center;
@@ -73,7 +112,7 @@
   width: 60%;
 }
 
-.landigPage_container  h1 {
+.landigPage_container h1 {
   color: white;
   text-align: center;
 }
@@ -83,7 +122,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
 }
 
 .landigPage_container button {
@@ -100,8 +139,8 @@
   align-items: center;
   background: var(--primary-gradient);
   height: 10vh;
-  width:90vw;
-  padding:  1rem;
+  width: 90vw;
+  padding: 1rem;
 }
 
 /* SEARCH PAGE */
@@ -124,6 +163,7 @@
   border-radius: 0rem 0.3rem 0.3rem 0rem;
   margin: 0;
 }
+
 .searchBar_container input {
   width: 60%;
   height: 1.5rem;
@@ -137,6 +177,7 @@
   flex-wrap: wrap;
   width: 90%;
 }
+
 .searchPage_Title {
   padding: 0 1rem;
 }
@@ -161,10 +202,11 @@
   border-radius: 40px;
   font-size: 50px;
   text-align: center;
-  box-shadow:  0 0 10px 0px black;
+  box-shadow: 0 0 10px 0px black;
   background: var(--primary-gradient);
   color: white;
 }
+
 .homePage_gotocart_Btn p {
   position: fixed;
   bottom: 1.8vh;
@@ -173,7 +215,7 @@
   height: 24px;
   border-radius: 12px;
   font-size: 12px;
-  
+
   margin: 0;
   padding: 0;
   background: var(--secondaryLight);
@@ -181,7 +223,7 @@
   line-height: 24px;
   text-align: center;
 
-  box-shadow:  0 0 10px 0px black;
+  box-shadow: 0 0 10px 0px black;
 }
 
 
@@ -195,19 +237,23 @@
   align-items: center;
   background: var(--primary-gradient);
 }
+
 .signUpPage_container h1 {
   color: white;
   font-size: 48px;
 }
+
 .signUpPage_container h3 {
   color: var(--secondary);
   margin: 0;
 }
+
 .signUpPage_container input {
   height: 24px;
   border-radius: 8px;
   margin-bottom: 16px;
 }
+
 .formBtn {
   background: var(--secondary-gradient);
   margin: 16px;
@@ -231,7 +277,7 @@
 .cartPage_bookContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   height: 75vh;
   overflow-y: scroll;
 }
@@ -241,30 +287,43 @@
 /* DETAIL PAGE */
 .cartPage_Header {
   display: flex;
-  flex-direction: row ;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   height: 10vh;
-  width:95vw;
-  padding: 0 1rem ;
+  width: 95vw;
+  padding: 0 1rem;
   background: var(--primary-gradient);
 }
 
 .detailPage_mainContainer {
-  padding: 0 2rem;
+  margin-top: 15vh;
+  min-height: 85vh;
+
+}
+.detailPage_infoContainer {
+  padding: 0 1rem;
   display: flex;
+  min-height: 55vh;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   color: white;
   text-align: center;
   background: var(--primary);
 }
-.detailPage_imgContainer{
+.detailPage_infoContainer h2 {
+  color: rgba(149, 149, 149, 0.7);
+}
+
+.detailPage_imgContainer {
   display: flex;
   justify-content: center;
-  background: linear-gradient(0deg, var(--primary) 50%, rgba(9,9,121,0) 100%);
+  height: 200px;
+  background: linear-gradient(0deg, var(--primary) 50%, rgba(9, 9, 121, 0) 100%);
 }
-.detailPage_roundImgContainer{
+
+.detailPage_roundImgContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,10 +332,25 @@
   width: 200px;
   border-radius: 100px;
 }
+
 .detailPage_bookImg {
   height: 140px;
   width: 140px;
   object-fit: contain;
+}
+.detailPage_priceContainer {
+  width: 90vw;
+margin-top: -6rem;
+margin-bottom: 2rem;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+}
+
+.detailPage_infoContainer h3 {
+  display: flex;
+  padding: 1rem 0;
 }
 
 
@@ -289,5 +363,5 @@
   overflow-x: scroll;
   background: var(--primary-gradient-Alpha50);
   padding: 0.5rem;
- 
+
 }
