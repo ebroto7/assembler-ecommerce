@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState, useContext } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast';
+
 import { IoArrowBackCircleOutline } from "react-icons/io5"
 import { AuthContext, LogedType } from '../context/authContext/authContext'
 
 export const LoginPage = () => {
 
-  const {loginContext} = useContext(AuthContext)
+  const { loginContext } = useContext(AuthContext)
   const navigate = useNavigate()
 
 
@@ -22,7 +24,7 @@ export const LoginPage = () => {
     // } 
   }, [])
 
- 
+
   const validateUserName = (username: string) => {
     if (username.length < 4) return "invalid user name. The username must contain a minimum of 4 characters"
   }
@@ -37,12 +39,12 @@ export const LoginPage = () => {
 
   const handleSubmit = (ev: React.FormEvent) => {
     ev.preventDefault()
-   
+
     const userLoged: LogedType = {
       user: { userName: user, password: password },
       isLogged: true
-  }
-
+    }
+    notify
     loginContext(userLoged)
     navigate("/home")
     // navigate((-1), {
@@ -50,12 +52,18 @@ export const LoginPage = () => {
     // })
   }
 
+
+  const notify = () => toast('You have successfully logged in.');
+
+
+
   return (
     <main className='signUpPage_container'>
       <header className="pages_Header">
         <Link to="/" key="">
           <button><IoArrowBackCircleOutline />Back</button>
         </Link>
+
       </header>
       <h1>Login</h1>
       <form className="form" onSubmit={handleSubmit}>
@@ -83,8 +91,9 @@ export const LoginPage = () => {
           />
           <p className='formErrorMessage'>{passwordErrorMessage}</p>
         </section>
-        
+
         <button className='formBtn' type="submit">Login</button>
+        <Toaster position="top-right" reverseOrder={false} />
       </form>
     </main>
   )

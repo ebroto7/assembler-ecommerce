@@ -8,6 +8,7 @@ import { SEARCH } from '../Routes/paths';
 import { AuthContext, LogedType } from '../context/authContext/authContext'
 
 
+
 const Navbar: FC = () => {
     const {authState, logout} = useContext(AuthContext)
     const {isLogged, user} = authState
@@ -36,8 +37,8 @@ const Navbar: FC = () => {
                     </NavLink>
                     <button><IoMdMenu /></button>
                 </div>
-
             </div>
+            
             {viewLogin && <div className='navBar_userAuthenticatedBar'>{`welcome ${user.userName}!`}</div>}
             {viewLogin && <button onClick={handleLogout}>logout</button>}
 
