@@ -7,16 +7,18 @@ import { IoMdMenu } from "react-icons/io"
 import { SEARCH } from '../Routes/paths';
 import { AuthContext, LogedType } from '../context/authContext/authContext'
 
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 
 const Navbar: FC = () => {
-    const {authState, logout} = useContext(AuthContext)
-    const {isLogged, user} = authState
-    console.log("navbar",authState)
-    console.log("navbar name",authState.user.userName)
-    console.log("navbar logged",user.userName)
+    const { authState, logout } = useContext(AuthContext)
+    const { isLogged, user } = authState
+    console.log("navbar", authState)
+    console.log("navbar name", authState.user.userName)
+    console.log("navbar logged", user.userName)
 
-    const [viewLogin, setViewLogin]= useState<Boolean>(isLogged)
+    const [viewLogin, setViewLogin] = useState<Boolean>(isLogged)
 
     const handleLogout = () => {
         logout()
@@ -35,10 +37,25 @@ const Navbar: FC = () => {
                     <NavLink to={SEARCH} key="search">
                         <button><FaSearch /></button>
                     </NavLink>
-                    <button><IoMdMenu /></button>
+                    {/* <button><IoMdMenu /></button> */}
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            <IoMdMenu /> menu
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                        
+                                <NavLink to={SEARCH} key="search"> <FaSearch /> </NavLink>
+
+                            
+                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
                 </div>
             </div>
-            
+
             {viewLogin && <div className='navBar_userAuthenticatedBar'>{`welcome ${user.userName}!`}</div>}
             {viewLogin && <button onClick={handleLogout}>logout</button>}
 

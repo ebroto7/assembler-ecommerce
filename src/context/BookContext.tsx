@@ -171,6 +171,8 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
 
 
    const handleAddBook = (book: BookType) => {
+      console.log("ferrran cabron ")
+
       dispatch({
          type: Actions.AddBook,
          payload: {

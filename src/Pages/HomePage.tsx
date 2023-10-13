@@ -29,11 +29,11 @@ export const HomePage = () => {
   console.log("HomePage numberBooksOnCart:" + numberBooksOnCart)
 
 
-  useEffect(() => {
-    localStorage.getItem('books')
+  // useEffect(() => {
+  //   localStorage.getItem('books')
 
-    setCartNumber(cartItems.length)
-  }, [cartNumber, cartItems])
+  //   setCartNumber(cartItems.length)
+  // }, [cartNumber, cartItems])
 
   const notify = () => toast.success('Here is your toast.', { duration: 2000 });
 
@@ -50,7 +50,7 @@ export const HomePage = () => {
         <Link to={CART} key="cart">
           <button className='homePage_gotocart_Btn'>
             <IoBagCheckOutline />
-            {cartNumber === 0 ? <p>{0}</p> : <p>{cartNumber}</p>}
+            {numberBooksOnCart === 0 ? <p>{0}</p> : <p>{numberBooksOnCart}</p>}
           </button>
         </Link>
 

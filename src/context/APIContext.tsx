@@ -9,6 +9,8 @@ import {
    useEffect
 } from "react"
 import { BookType } from "../Types/book"
+import axios from 'axios';
+
 
 
 export type ApiBookStateProps = {
@@ -20,19 +22,21 @@ export const APIcontext = createContext<ApiBookStateProps>({
 })
 
 const APIbooksProvider: FC<PropsWithChildren> = ({ children }) => {
-
+   const url = import.meta.env.VITE_API_BASE_URL
    const [apiBooks, setApiBooks] = useState<BookType[]>([])
 
    useEffect(() => {
+         const getProducts = async () => {
+            try {
+              const response = await axios.get(url);
+              setApiBooks(response.data);
+              console.log(' fetching data:', response.data);
 
-   const url = 'http://localhost:3000/books'
-   const getProducts = async () => {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log("json data= " + data)
-      setApiBooks(data)
-   }
-   getProducts();
+            } catch (error) {
+              console.log('Error fetching data:', error);
+            }
+         }
+         getProducts()
    }, []);
 
    return (
