@@ -146,7 +146,6 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
    console.log("book context ", numberBooksOnCart)
 
    const [cartItems, dispatch] = useReducer(bookReducer, {}, init);
-   console.log("cartitems ", cartItems)
 
 
    const calculatedTotal = () => {
@@ -171,7 +170,7 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
 
 
    const handleAddBook = (book: BookType) => {
-      console.log("ferrran cabron ")
+      console.log("añado el libro ")
 
       dispatch({
          type: Actions.AddBook,

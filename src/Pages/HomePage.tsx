@@ -14,13 +14,6 @@ import ErrorView, { error }  from '../Components/errorView/ErrorView';
 
 const bookFilters = ['Best seller', 'Fiction', 'Best rated']
 
-enum BookFilters {
-  BestSeller = 'Best seller',
-  BestRated = 'Best rated',
-  // WishList = 'Wish list',
-  Science = "Science"
-}
-
 export const HomePage = () => {
 
   const { apiBooks, apiError } = apiContext()

@@ -31,18 +31,16 @@ const DetailPage = () => {
             {book ?
                 <section className="detailPage_mainContainer">
                     <article className="detailPage_imgContainer ">
+                        <h3>{currencyFormat(book.price)}</h3>
 
                         <div className="detailPage_roundImgContainer ">
                             <img className="detailPage_bookImg" src={book.img} alt={`${book.title} image`} />
                         </div>
+                        <h4>{book.rating} <BsStarHalf /></h4>
 
                     </article>
 
                     <article className="detailPage_infoContainer ">
-                        <div className="detailPage_priceContainer">
-                            <h3>{currencyFormat(book.price)}</h3>
-                            <h3>{book.rating} <BsStarHalf /></h3>
-                        </div>
                         {book && <BuyBookButton {...book} />}
                         <h1>{book.title}</h1>
                         <h2>{book.author}</h2>

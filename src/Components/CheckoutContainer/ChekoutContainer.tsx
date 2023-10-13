@@ -1,8 +1,10 @@
-import { FC } from 'react'
+import { ButtonHTMLAttributes, FC, useEffect, useRef } from 'react'
 import "./checkoutContainer.styles.css";
 import { currencyFormat } from '../../utils/utils';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { CHECKOUT } from '../../Routes/paths';
+import { bookContext } from '../../context/BookContext';
+  
 
 
 type Props = {
@@ -11,7 +13,20 @@ type Props = {
 }
 
 export const ChekoutContainer: FC<Props> = ({ price, numberProducts }) => {
+const {cartItems} = bookContext()
+const Navigate = useNavigate()
 
+const button = useRef<HTMLButtonElement>(null)
+useEffect(()=>{
+    if (button != null ) {
+       (cartItems.length != 0) && button!.current!.removeAttribute("disabled")  
+    }
+},[])
+const handleCheckout = () => {
+  Navigate("/checkout")
+  console.log("click checkout button")
+
+}
   return (
     <section className='cartPage_checkoutContainer'>
       <div className='cartPage_infoContainer'>
@@ -26,9 +41,10 @@ export const ChekoutContainer: FC<Props> = ({ price, numberProducts }) => {
 
       </div>
 
-      <Link to={CHECKOUT} className='cartPage_checkoutContainer_Link' >
-        <button className='cartPage_chekoutButton'> Checkout </button>
-      </Link>
+        {/* {(cartItems.length !== 0) && <button className='cartPage_chekoutButton' onClick={handleCheckout}> Checkout </button>}
+        {(!cartItems.length ) && <button className='cartPage_chekoutButton' ref={button} disabled> Checkout </button>} */}
+      <button className='cartPage_chekoutButton' ref={button} onClick={handleCheckout} > Checkout </button>
+ 
     </section>
   )
 }

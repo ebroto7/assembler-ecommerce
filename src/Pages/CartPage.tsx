@@ -7,6 +7,7 @@ import { CartContext } from '../context/BookContext'
 import {IoArrowBackCircleOutline} from "react-icons/io5"
 import {MdOutlineRemoveShoppingCart} from "react-icons/md"
 import { HOME } from '../Routes/paths'
+import Navbar from '../Components/Navbar'
 
 
 
@@ -19,14 +20,11 @@ export const CartPage = () => {
 
    return (
     <>
-      <div className='pages_Header'>
-        <Link to={HOME} key ="home">
-              <button><IoArrowBackCircleOutline /> Home</button>
-        </Link>   
-      </div>
+      
+      <Navbar/>
       <section className='cartPage_bookContainer'>
         {(cartItems.length == 0) && 
-        <div>
+        <div className='cartPage_emptycart_container'>
             <h1><MdOutlineRemoveShoppingCart/></h1>          
            <h3>your cart is empty</h3>
         </div>
