@@ -28,29 +28,33 @@ const CheckoutPage = () => {
         .reduce((a, b) => a + b, 0);
 
     return (
-        <div>
-            <h1>Cart Resume</h1>
-            <table>
-                <thead>
-                    <tr key={"header"}>
-                        <th key={id}>Book</th>
-                        <th key={id + 1}>Units</th>
-                        <th key={id + 2}>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cartItems && cartItems.map((book) => (
-                        <tr key={book.isbn}>
-                            <td key={id + book.isbn + 1}>{book.book.title}</td>
-                            <td key={id + book.isbn + 2}>{`x ${book.units}`}</td>
-                            <td key={id + book.isbn + 3}>{currencyFormat(book.book.price * book.units)}</td>
+        <main className='checkoutPage_mainContainer'>
+            <div className='checkoutPage_infoContainer'>
+                <h1>Cart Resume</h1>
+                <table>
+                    <thead>
+                        <tr key={"header"}>
+                            <th key={id}>Book</th>
+                            <th key={id + 1} className='.rightAlign'>Units</th>
+                            <th key={id + 2} className='.rightAlign'>Price</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            <h4>{`total buy: ${currencyFormat(totalPrice)}`}</h4>
-            <button onClick={handleBuy}> Pay </button>
-        </div>
+                    </thead>
+                    <tbody>
+                        {cartItems && cartItems.map((book) => (
+                            <tr key={book.isbn}>
+                                <td key={id + book.isbn + 1}>{book.book.title}</td>
+                                <td key={id + book.isbn + 2} className='.rightAlign'>{`x ${book.units}`}</td>
+                                <td key={id + book.isbn + 3} className='.rightAlign'>{currencyFormat(book.book.price * book.units)}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <h4>{`total buy: ${currencyFormat(totalPrice)}`}</h4>
+            </div>
+            <div className="checkoutPage_buttonContainer">
+                <button onClick={handleBuy}> Pay </button>
+            </div>
+        </main>
     )
 }
 

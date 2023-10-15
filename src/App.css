@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fasthand&family=Titillium+Web&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,200&display=swap');
 
 :root {
 
@@ -381,6 +382,64 @@
   height: 140px;
   width: 140px;
   object-fit: contain;
+}
+
+/* CHECKOUT PAGE */
+
+.checkoutPage_mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background: var(--primary-gradient-Alpha50);
+  
+}
+
+.checkoutPage_infoContainer {
+  font-family: 'IBM Plex Mono', monospace;
+  border-radius: 1rem 3rem ;
+
+  background: #f5f4f0;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.7); 
+}
+
+.checkoutPage_mainContainer h1 {
+  margin: 1rem;
+  margin-top: 3rem;
+
+}
+
+.checkoutPage_mainContainer table {
+  margin: 1rem;
+  font-style: italic;
+}
+.rightAlign {
+  text-align: right;
+}
+
+.checkoutPage_mainContainer h4 {
+  margin: 1rem;
+  margin-bottom: 3rem;
+}
+
+.checkoutPage_buttonContainer {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  width: 100%;
+  margin: 2rem;
+}
+
+.checkoutPage_buttonContainer button {
+  width: 50%;
+  background: var(--secondary-gradient);
+}
+
+.checkoutPage_buttonContainer button:hover {
+  transform: scale(1.1);
 }
 
 
