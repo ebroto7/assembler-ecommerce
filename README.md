@@ -33,3 +33,5 @@ If you are developing a production application, we recommend updating the config
 pnpm intall react-hot-toast
 <!-- pnpm install bootstrap -->
 pnpm install axios
+
+pnpm i react-confetti-explosion

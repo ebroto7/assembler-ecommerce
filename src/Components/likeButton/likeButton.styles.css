@@ -10,5 +10,5 @@
 
 .likeButton:hover {
     border: 2px solid var(--secondary);
-    transform: scale(1.2);
+    transform: scale(1.1);
 }

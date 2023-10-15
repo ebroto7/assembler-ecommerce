@@ -1,9 +1,11 @@
-import { useContext, useId } from 'react'
+import { useContext, useId, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/BookContext'
 import { currencyFormat } from '../utils/utils'
 import { HOME } from '../Routes/paths'
 import  {AuthContext}  from '../context/authContext/authContext'
+
+import ConfettiExplosion from 'react-confetti-explosion';
 
 
 
@@ -12,23 +14,27 @@ const CheckoutPage = () => {
 
     const { cartItems } = useContext(CartContext)
     const { logout } = useContext(AuthContext)
+    
+    const [isExploding, setIsExploding] = useState(false);
 
     const id = useId()
-    console.log(localStorage.getItem('userLogin'))
 
     const handleBuy = () => {
         localStorage.removeItem('books')
+        localStorage.removeItem('wishList')
+        setIsExploding(true)
         logout()
         alert("The purchase has been made successfully, in the next 72 hours you will receive your order")
-        // navigate("/")
+        navigate("/home")
     }
 
     const totalPrice = cartItems.map((book) =>  book.book.price * book.units)
                                 .reduce((a, b) => a + b, 0);
-
+    
     return (
         <div>
             <h1>Cart Resume</h1>
+            {isExploding && <ConfettiExplosion />}
             <table>
                 <thead>
                     <tr key={"header"}>
@@ -48,10 +54,7 @@ const CheckoutPage = () => {
                 </tbody>
             </table>
             <h4>{`total buy: ${currencyFormat(totalPrice)}`}</h4>
-            <Link to={HOME}>
-                <button onClick={handleBuy}> Pay 
-                </button>
-            </Link>
+                <button onClick={handleBuy}> Pay </button>
         </div>
     )
 }
