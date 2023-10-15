@@ -38,7 +38,7 @@ export const BuyBookButton: FC<BookType> = (book) => {
         <>
             {/* <button onClick={AddBook} className="bookCard_buyButton">Add to cart</button> */}
             {(!isBuy) && <button onClick={AddBook} className="bookCard_buyButton">Add <BiCartDownload /></button>}
-            {(isBuy) && <button onClick={RemoveBook} className="bookCard_buyButton">Remove from cart</button>}
+            {(isBuy) && <button  onClick={RemoveBook} className="bookCard_buyButton remove">Remove</button>}
         </>
 
     )
