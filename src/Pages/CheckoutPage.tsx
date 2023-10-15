@@ -14,8 +14,7 @@ const CheckoutPage = () => {
     const { logout } = useContext(AuthContext)
 
     const id = useId()
-    console.log(localStorage.getItem('userLogin'))
-
+    
     const handleBuy = () => {
         // localStorage.removeItem('books')
         removeAll()

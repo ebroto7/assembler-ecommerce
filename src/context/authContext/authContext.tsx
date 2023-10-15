@@ -53,7 +53,6 @@ const authReducer = (user: LogedType, action: AuthAction) => {
         case AuthActionTypes.login: {
             const addedUser:LogedType = action.payload
             
-            console.log("reducer add reducer",addedUser)
             return addedUser
         }
         case AuthActionTypes.logout: {
@@ -74,7 +73,6 @@ const authReducer = (user: LogedType, action: AuthAction) => {
 const init = () => {
     const userString = localStorage.getItem('user');
     const user: UserType = userString ? JSON.parse(userString) : null;
-    console.log("usereducer func init", user)
     const loggedUser: LogedType = {
         user: user,
         isLogged: true
@@ -90,7 +88,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const loginContext = (newUser: LogedType) => {
         localStorage.setItem('user', JSON.stringify(newUser))
-        console.log("logincontext func",newUser)
 
         dispatch({
             type: AuthActionTypes.login,
@@ -102,8 +99,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
 
     const logout = () => {
-        console.log("AuthContext logout")
-
         localStorage.removeItem('user')
         localStorage.removeItem('books')
         dispatch({

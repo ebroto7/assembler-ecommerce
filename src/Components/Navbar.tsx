@@ -11,10 +11,8 @@ const Navbar: FC = () => {
     const { isLogged, user } = authState
 
     useEffect(() => {
-        console.log("vabar auth state", isLogged)
     }, [authState] )
 
-    console.log("navbar",user.userName)
     return (
         <header className='main_header'>
             <div className='main_header_container'>

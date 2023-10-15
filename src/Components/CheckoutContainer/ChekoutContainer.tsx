@@ -1,16 +1,12 @@
 import "./checkoutContainer.styles.css";
 
-import { FC, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import { currencyFormat } from '../../utils/utils';
 import { bookContext } from '../../context/BookContext';
-  
-type Props = {
-  price: number
-}
 
-export const ChekoutContainer: FC<Props> = ({ price }) => {
+export const ChekoutContainer = () => {
 const {cartItems, totalPrice} = bookContext()
 const Navigate = useNavigate()
 
@@ -27,7 +23,6 @@ const Navigate = useNavigate()
 
 const handleCheckout = () => {
   Navigate("/checkout")
-  console.log("click checkout button")
 
 }
   return (

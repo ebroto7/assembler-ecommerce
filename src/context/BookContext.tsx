@@ -184,7 +184,6 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
       })
    }
    const removeAll = () => {
-      console.log("removeall function book")
       dispatch({
          type: Actions.removeAll,
       })

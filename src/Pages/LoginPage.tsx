@@ -44,7 +44,6 @@ export const LoginPage = () => {
       user: { userName: user, password: password },
       isLogged: true
     }
-    console.log("loginPage userlogged",userLoged)
     notify
     loginContext(userLoged)
     navigate(-1)
