@@ -202,8 +202,6 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
       })
    }
 
-
-
    return (
       <CartContext.Provider
          value={{ cartItems, handleAddBook, removeFromCart, restBookUnits, totalPrice, numberBooksOnCart }}

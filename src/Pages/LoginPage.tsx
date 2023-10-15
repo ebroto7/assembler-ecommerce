@@ -46,10 +46,8 @@ export const LoginPage = () => {
     }
     notify
     loginContext(userLoged)
-    navigate("/home")
-    // navigate((-1), {
-    //   replace: true
-    // })
+    navigate(-1)
+  
   }
 
 
@@ -57,7 +55,7 @@ export const LoginPage = () => {
 
 const goBack = () => {
   // navigate(-1)
-  navigate("/home")
+  navigate(-1)
 }
 
   return (
