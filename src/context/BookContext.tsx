@@ -25,6 +25,7 @@ enum Actions {
    RemoveBook = "RemoveBook",
    sumUnits = "SumUnits",
    restUnits = "restUnits",
+   removeAll = "removeAll"
 }
 interface AddBook {
    type: Actions.AddBook,
@@ -58,31 +59,39 @@ interface restUnits {
       units: number
    }
 }
-type Action = AddBook | RemoveBook | sumUnits | restUnits
+interface removeAll {
+   type: Actions.removeAll,
+  
+}
+type Action = AddBook | RemoveBook | sumUnits | restUnits | removeAll
 
 
 const  bookReducer = (bookList: CartBookType[], action: Action) => {
    switch (action.type) {
       case Actions.AddBook: {
+      
          const isOnCart = bookList.find(
             (cartBook) => cartBook.isbn === action.payload.isbn
          )
          if (isOnCart) {
             isOnCart.units += 1
             console.log("bookcontext increase unit ", isOnCart.units)
-
+               
          }
          if (!isOnCart) {
-            bookList.push({
-               book: action.payload.book,
-               isbn: action.payload.isbn,
-               units: 1,
-            })
+           
+            // const addedBook = {
+            //    book: action.payload.book,
+            //    isbn: action.payload.isbn,
+            //    units: 1,
+            // }
             console.log("bookcontext add book", bookList)
 
             localStorage.setItem("books", JSON.stringify(bookList));
+            return [...bookList, action.payload]
+
          }
-         return bookList
+         return [...bookList]
       }
 
       case Actions.restUnits: {
@@ -91,10 +100,11 @@ const  bookReducer = (bookList: CartBookType[], action: Action) => {
          )
          if (isOnCart && isOnCart.units > 0) {
             isOnCart.units -= 1
+            action.payload
             console.log("bookcontext rest unit ", isOnCart.units)
             localStorage.setItem("books", JSON.stringify(bookList));
          }
-         return bookList
+         return [...bookList]
       }
 
       case Actions.RemoveBook: {
@@ -105,10 +115,16 @@ const  bookReducer = (bookList: CartBookType[], action: Action) => {
          localStorage.setItem("books", JSON.stringify(bookList));
          console.log("bookcontext remove book ", bookList)
 
-         return bookList
+         return [...bookList]
+      }
+
+      case Actions.removeAll: {
+            localStorage.removeItem("books")
+
+            return [...bookList]
       }
       default:
-         return bookList;
+         return [...bookList];
    }
 }
 
@@ -125,6 +141,7 @@ export type BookStateProps = {
    handleAddBook: (book: BookType) => void;
    removeFromCart: (book: BookType) => void;
    restBookUnits: (book: BookType) => void;
+   removeAll: (book: BookType) => void;
    totalPrice: number
    numberBooksOnCart: number
 }
@@ -134,6 +151,7 @@ export const CartContext = createContext<BookStateProps>({
    handleAddBook: () => { },
    removeFromCart: () => { },
    restBookUnits: () => { },
+   removeAll: () => { },
    totalPrice: 0,
    numberBooksOnCart: 0
 })
@@ -143,7 +161,6 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
 
    const [totalPrice, setTotalPrice] = useState<number>(0)
    const [numberBooksOnCart, setNumberBooksOnCart] = useState<number>(0)
-   console.log("book context ", numberBooksOnCart)
 
    const [cartItems, dispatch] = useReducer(bookReducer, {}, init);
 
@@ -201,10 +218,15 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
          }
       })
    }
+   const removeAll = () => {
+      dispatch({
+         type: Actions.removeAll,
+      })
+   }
 
    return (
       <CartContext.Provider
-         value={{ cartItems, handleAddBook, removeFromCart, restBookUnits, totalPrice, numberBooksOnCart }}
+         value={{ cartItems, handleAddBook, removeFromCart, restBookUnits, removeAll, totalPrice, numberBooksOnCart }}
       >
          {children}
       </CartContext.Provider>

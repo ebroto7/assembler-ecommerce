@@ -10,7 +10,8 @@ type Props = {
 
 const BookInlineContainer:FC<Props> = ({title, bookList} ) => {
 
-  let books: BookType[] = shuffle(bookList)
+  //  let books: BookType[] = shuffle(bookList)
+  let books: BookType[] = bookList
 
   if (title === 'Best seller') {
     books = books.filter((book) => book.bestseller === true );

@@ -9,7 +9,7 @@ import ButtonMenu from './CheckoutContainer/buttonMenu/ButtonMenu';
 const Navbar: FC = () => {
     const { authState } = useContext(AuthContext)
     const { isLogged, user } = authState
-
+    console.log("navbar",user.userName)
     return (
         <header className='main_header'>
             <div className='main_header_container'>

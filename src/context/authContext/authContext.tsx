@@ -33,10 +33,6 @@ interface Login {
 }
 interface Logout {
     type: AuthActionTypes.logout,
-    payload: {
-        user: UserType,
-        isLogged: boolean
-    }
 }
 type AuthAction = Login | Logout
 
@@ -55,31 +51,27 @@ const authReducer = (user: LogedType, action: AuthAction) => {
 
     switch (action.type) {
         case AuthActionTypes.login: {
-          
-            return action.payload
+            const addedUser:LogedType = action.payload
+            
+            console.log("reducer add reducer",addedUser)
+            return addedUser
         }
         case AuthActionTypes.logout: {
-              const deletedUser: LogedType = {
-                user: {
-                    userName: "",
-                    password: ""
-                },
-                isLogged: false
-            }
+
             localStorage.removeItem('user')
 
-            return deletedUser
-        }
-        default: 
             return user
-        
+        }
+        default:
+            return user
+
     }
 }
 
 const init = () => {
     const userString = localStorage.getItem('user');
     const user: UserType = userString ? JSON.parse(userString) : null;
-    console.log("usereducer func init",user)
+    console.log("usereducer func init", user)
     const loggedUser: LogedType = {
         user: user,
         isLogged: true
@@ -93,10 +85,9 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const [authState, dispatch] = useReducer(authReducer, {}, init)
 
-    console.log("authstate", authState)
-
     const loginContext = (newUser: LogedType) => {
         localStorage.setItem('user', JSON.stringify(newUser))
+        console.log("logincontext func",newUser)
 
         dispatch({
             type: AuthActionTypes.login,
@@ -114,10 +105,6 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         localStorage.removeItem('books')
         dispatch({
             type: AuthActionTypes.logout,
-            payload: {
-                user: { userName: "", password: "" },
-                isLogged: false
-            }
         })
     }
 
