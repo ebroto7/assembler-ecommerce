@@ -35,12 +35,10 @@ const APIbooksProvider: FC<PropsWithChildren> = ({ children }) => {
                const response = await axios.get(url);
             //   const response = await axios.get("https://www.developerway.com/posts/how-to-handle-errors-in-react");
               setApiBooks(response.data);
-              console.log(' fetching data:', response.data);
-              console.log(' fetching data:', response.status);
+
               setApiError(false)
 
             } catch (error) {
-              console.log('Error fetching data:', error);
               setApiError(true)
             }
          }

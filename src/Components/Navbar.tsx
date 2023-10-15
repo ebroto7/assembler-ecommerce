@@ -1,14 +1,19 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useContext } from 'react';
 import logo_star_transparent from '../Assets/Images/Logo/logo-star-transparent.png'
 
 import { AuthContext } from '../context/authContext/authContext'
 
-import ButtonMenu from './CheckoutContainer/buttonMenu/ButtonMenu';
+import ButtonMenu from './buttonMenu/ButtonMenu';
 
 const Navbar: FC = () => {
     const { authState } = useContext(AuthContext)
     const { isLogged, user } = authState
+
+    useEffect(() => {
+        console.log("vabar auth state", isLogged)
+    }, [authState] )
+
     console.log("navbar",user.userName)
     return (
         <header className='main_header'>

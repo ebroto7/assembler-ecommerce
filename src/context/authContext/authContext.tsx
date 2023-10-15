@@ -57,10 +57,13 @@ const authReducer = (user: LogedType, action: AuthAction) => {
             return addedUser
         }
         case AuthActionTypes.logout: {
-
+            const deletedUser:LogedType = {
+                    user: { userName: "", password: "" },
+                    isLogged: false
+                }
             localStorage.removeItem('user')
 
-            return user
+            return deletedUser
         }
         default:
             return user

@@ -19,18 +19,14 @@
     padding: 0;
     width: 75%;
 }
-.cartPage_infoContainer {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    margin: 5px 0;
-}
+
 .cartPage_checkoutInfo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0;
     padding: 0;
+    width: 50%;
 }
 .cartPage_checkoutInfo h3 {
  margin: 0;

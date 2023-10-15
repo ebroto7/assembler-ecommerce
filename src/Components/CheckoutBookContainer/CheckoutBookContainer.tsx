@@ -1,11 +1,12 @@
+import "./checkoutBookContainer.styles.css"
+
 import { useState, useEffect, useContext } from 'react'
 import { FC } from 'react'
 import { CartBookType, CartContext } from '../../context/BookContext'
 
-import { BookType } from '../../Types/book'
-import "./checkoutBookContainer.styles.css"
-import {GoTrash} from 'react-icons/go'
 import { currencyFormat } from '../../utils/utils'
+import {GoTrash} from 'react-icons/go'
+
 type Props = {
     book: CartBookType
 }
@@ -18,18 +19,16 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
     const [bookPrice, setBookPrice] = useState<number>(book.book.price*numberItems)
 
     const add = () => {
-        if (book.units < book.book.stock) {
-            console.log("chechoutBookOcntainer book stock= " + book.book.stock)
+        if (numberItems < book.book.stock) {
             handleAddBook(book.book)
             setMumberItems(current => current +1)
         }
     }
     const rest = () => {
-        if (book.units > 0) {
+        if (numberItems > 1) {
             restBookUnits(book.book)
             setMumberItems(current => current -1)
         }
-        
     }
     const reset = () => {
         removeFromCart(book.book)
@@ -37,13 +36,10 @@ export const CheckoutBookContainer: FC<Props> = ({ book }) => {
 
     }
     useEffect(() => {
-        setBookPrice(book.book.price * numberItems)
-
+        setBookPrice(book.book.price * book.units)
     },[numberItems])
 
-    // useEffect(() => {
-    //     if (book.units === 0) setBookPrice(current => current = book.book.price)
-    // }, [cartItems])
+
 
     return (
         <section className='CheckoutBookContainer'>

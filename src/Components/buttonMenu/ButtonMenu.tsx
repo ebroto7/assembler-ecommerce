@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react'
-import { AuthContext } from '../../../context/authContext/authContext'
+import { AuthContext } from '../../context/authContext/authContext'
 
-import { ABOUTUS, HOME, LOGIN, SEARCH } from '../../../Routes/paths';
+import { ABOUTUS, CART, HOME, LOGIN, SEARCH } from '../../Routes/paths';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -38,7 +38,7 @@ function ButtonMenu() {
 
             <Dropdown.Item href={HOME}><p className='navBar_dropDownMenu_link'> <IoLibraryOutline />Home </p></Dropdown.Item>
             <Dropdown.Item href={SEARCH}><p> <FaSearch /> Search</p></Dropdown.Item>
-            <Dropdown.Item href={SEARCH}><p> <BsCartCheck /> Cart</p></Dropdown.Item>
+            <Dropdown.Item href={CART}><p> <BsCartCheck /> Cart</p></Dropdown.Item>
             <Dropdown.Divider />
 
             <Dropdown.Item href={ABOUTUS}><p> <BsInfoCircle /> About Us</p></Dropdown.Item>

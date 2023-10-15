@@ -53,7 +53,8 @@
   font-size: 2rem;
   font-family: 'Titillium Web', sans-serif;
 }
-@media  (max-width: 360px)  {
+
+@media (max-width: 360px) {
   .main_header h1 {
     font-size: 1.5rem;
   }
@@ -286,13 +287,22 @@
 
 /* CART PAGE  */
 .cartPage_bookContainer {
-  margin-top: 10vh;
+  /* margin-top: 0vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 75vh;
   overflow-y: scroll;
   background: var(--primary-gradient-Alpha50);
+}
+
+.cartPage_emptycart_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 
@@ -347,6 +357,7 @@
   color: white;
   padding-bottom: 1rem;
 }
+
 .detailPage_imgContainer h4 {
   display: flex;
   justify-content: center;
