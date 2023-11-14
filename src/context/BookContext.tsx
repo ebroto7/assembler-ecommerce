@@ -103,7 +103,6 @@ const  bookReducer = (bookList: CartBookType[], action: Action) => {
          )
          bookList.splice(isOnCart, 1)
          localStorage.setItem("books", JSON.stringify(bookList));
-         console.log("bookcontext remove book ", bookList)
 
          return bookList
       }
@@ -143,7 +142,6 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
 
    const [totalPrice, setTotalPrice] = useState<number>(0)
    const [numberBooksOnCart, setNumberBooksOnCart] = useState<number>(0)
-   console.log("book context ", numberBooksOnCart)
 
    const [cartItems, dispatch] = useReducer(bookReducer, {}, init);
 
@@ -156,21 +154,16 @@ const BookProvider: FC<PropsWithChildren> = ({ children }) => {
          numberBooks += book.units
       })
       setTotalPrice(calculatedPrice)
-      console.log("bookcontext calculated totatlprice ", calculatedPrice)
-
       setNumberBooksOnCart(numberBooks)
-      console.log("bookcontext calculated numberBooks ", numberBooks)
    }
 
    useEffect(() => {
       localStorage.setItem("books", JSON.stringify(cartItems));
       calculatedTotal()
-      console.log("bookcontext useefect")
    }, [cartItems]);
 
 
    const handleAddBook = (book: BookType) => {
-      console.log("añado el libro ")
 
       dispatch({
          type: Actions.AddBook,

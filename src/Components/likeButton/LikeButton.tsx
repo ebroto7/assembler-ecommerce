@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState } from 'react'
+import { WishListContext } from '../../context/WishListContext'
 
 import { BookType } from '../../Types/book'
 
@@ -9,49 +10,46 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 
 export const LikeButton: FC<BookType> = (book) => {
-    const [isLike, setIsLike] = useState<boolean>()
+    const { wishList, addToWishList, removeFromWishList } = useContext(WishListContext)
+    const [isLike, setIsLike] = useState<boolean>(false)
     const [icon, setIcon] = useState(<AiOutlineHeart />)
-    // const wishList: BookType[] = []
-    const [wishList, setWishList] = useState<BookType[]>([])
+    const filterItems = wishList.find((wishBook) => wishBook.book.isbn === book.isbn)
+
+    useEffect(() => {
+        if (filterItems !== undefined) {
+            setIsLike(true)
+            setIcon(<AiFillHeart />)
+        } else {
+            setIsLike(false)
+            setIcon(<AiOutlineHeart />)
+        }
+    }, [])
+
 
 
     const handleLike = (event: any) => {
         event.preventDefault()
-        setIsLike(current => !current)
         console.log(" wishlist button")
-
-    }
-
-
-    useEffect(() => {
         if (isLike) {
             setIcon(<AiFillHeart />)
-            // const updatetedWishList: BookType[] = wishList.splice(0, 0, book)
-            // const updatetedWishList: BookType[] = (...wishList, book)
-            // setWishList(updatetedWishList) 
-            setWishList([...wishList, book])
+            addToWishList(book)
+            setIsLike(current => !current)
             console.log("useEffect book", book)
             console.log("useEffect wishlist", wishList)
         }
 
         if (!isLike) {
             setIcon(<AiOutlineHeart />)
-            const updatetedWishList = wishList.filter(a =>
-                a.id !== book.id)
-            setWishList(updatetedWishList)
+            removeFromWishList(book)
+            setIsLike(current => !current)
 
         }
+    }
 
-    }, [isLike])
-
-    useEffect(() => {
-        localStorage.setItem("wishList", JSON.stringify(wishList));
-        console.log("save wishlist", wishList)
-    }, [wishList])
-
-    return (<>
-        <button onClick={handleLike} className='likeButton'> {icon}</button>
-    </>
+    return (
+        <>
+            <button onClick={handleLike} className='likeButton'> {icon}</button>
+        </>
 
     )
 }

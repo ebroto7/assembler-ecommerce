@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react'
-import { AuthContext } from '../../../context/authContext/authContext'
+import { AuthContext } from '../../context/authContext/authContext'
 
-import { ABOUTUS, HOME, LOGIN, SEARCH } from '../../../Routes/paths';
+import { ABOUTUS, HOME, LOGIN, SEARCH } from '../../Routes/paths';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 

@@ -5,7 +5,7 @@ import { currencyFormat } from '../utils/utils'
 import { HOME } from '../Routes/paths'
 import  {AuthContext}  from '../context/authContext/authContext'
 
-import ConfettiExplosion from 'react-confetti-explosion';
+// import ConfettiExplosion from 'react-confetti-explosion';
 
 
 
@@ -34,7 +34,7 @@ const CheckoutPage = () => {
     return (
         <div>
             <h1>Cart Resume</h1>
-            {isExploding && <ConfettiExplosion />}
+            {/* {isExploding && <ConfettiExplosion />} */}
             <table>
                 <thead>
                     <tr key={"header"}>

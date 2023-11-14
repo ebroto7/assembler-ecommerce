@@ -4,7 +4,7 @@ import logo_star_transparent from '../Assets/Images/Logo/logo-star-transparent.p
 
 import { AuthContext } from '../context/authContext/authContext'
 
-import ButtonMenu from './CheckoutContainer/buttonMenu/ButtonMenu';
+import ButtonMenu from './buttonMenu/ButtonMenu';
 
 const Navbar: FC = () => {
     const { authState } = useContext(AuthContext)
